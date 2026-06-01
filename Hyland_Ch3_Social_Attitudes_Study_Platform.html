@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyland Ch.3 — Social Attitudes & Science</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0e0c; --bg2:#16140f; --panel:#1c1a14; --panel2:#211e16;
+  --gold:#c9a96e; --gold-soft:#d8c294; --gold-dim:#8a7448;
+  --ink:#ece6d8; --ink-dim:#a89e8a; --line:#3a3327;
+  --green:#7faf6a; --green-bg:#1d2718; --red:#c97064; --red-bg:#2a1815;
+  --serif:'Cormorant Garamond',serif; --sans:'DM Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--sans);
+  display:flex; min-height:100vh; overflow-x:hidden;
+  background-image:radial-gradient(circle at 18% 12%,rgba(201,169,110,.06),transparent 45%),radial-gradient(circle at 85% 88%,rgba(201,169,110,.04),transparent 50%);
+}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:6px}
+
+/* SIDEBAR */
+#sidebar{
+  width:248px; flex:0 0 248px; background:var(--bg2); border-right:1px solid var(--line);
+  position:sticky; top:0; height:100vh; display:flex; flex-direction:column; padding:30px 0;
+}
+.brand{padding:0 26px 26px;border-bottom:1px solid var(--line)}
+.brand .kicker{font-family:var(--sans);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-dim)}
+.brand h1{font-family:var(--serif);font-weight:600;font-size:25px;line-height:1.12;color:var(--gold-soft);margin-top:8px}
+.brand .sub{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink-dim);margin-top:6px}
+.nav{padding:22px 16px;display:flex;flex-direction:column;gap:4px}
+.nav button{
+  background:none;border:none;color:var(--ink-dim);font-family:var(--sans);font-size:14px;
+  text-align:left;padding:13px 18px;border-radius:9px;cursor:pointer;display:flex;align-items:center;gap:13px;
+  letter-spacing:.02em;transition:all .2s;
+}
+.nav button .ic{width:18px;text-align:center;font-size:15px;opacity:.8}
+.nav button:hover{background:var(--panel);color:var(--ink)}
+.nav button.active{background:linear-gradient(90deg,rgba(201,169,110,.16),rgba(201,169,110,.02));color:var(--gold-soft);box-shadow:inset 2px 0 0 var(--gold)}
+.nav .num{margin-left:auto;font-size:11px;color:var(--gold-dim);font-variant-numeric:tabular-nums}
+.side-foot{margin-top:auto;padding:18px 26px 0;border-top:1px solid var(--line);font-size:11px;color:var(--gold-dim);font-family:var(--serif);font-style:italic;line-height:1.5}
+
+/* MAIN */
+#main{flex:1;min-width:0;padding:46px 56px 90px;max-width:1180px;margin:0 auto;width:100%}
+.view{display:none;animation:fade .5s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.page-head{margin-bottom:34px}
+.page-head .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:10px}
+.page-head h2{font-family:var(--serif);font-weight:600;font-size:42px;line-height:1.05;color:var(--gold-soft)}
+.page-head p{color:var(--ink-dim);max-width:680px;margin-top:12px;font-size:15px;line-height:1.6}
+.rule{height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);margin:18px 0 0}
+
+/* OVERVIEW GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:18px}
+.card{
+  background:linear-gradient(160deg,var(--panel),var(--bg2));border:1px solid var(--line);
+  border-radius:14px;padding:24px 22px;cursor:pointer;position:relative;overflow:hidden;transition:all .25s;
+}
+.card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 0%,rgba(201,169,110,.1),transparent 60%);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold-dim);box-shadow:0 16px 40px -18px rgba(0,0,0,.8)}
+.card:hover:before{opacity:1}
+.card .cnum{font-family:var(--serif);font-size:30px;color:var(--gold-dim);font-weight:600}
+.card h3{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ink);margin:6px 0 8px;line-height:1.12}
+.card p{font-size:12.5px;color:var(--ink-dim);line-height:1.5}
+.card .tag{margin-top:14px;display:inline-block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dim);border-radius:20px;padding:4px 11px}
+
+/* LESSON */
+.lesson{display:none}
+.lesson.active{display:block;animation:fade .45s ease}
+.lesson-top{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+.lesson-top .l-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-dim)}
+.lesson-top h2{font-family:var(--serif);font-weight:600;font-size:34px;color:var(--gold-soft);line-height:1.08;margin-top:6px;max-width:760px}
+.lesson-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;margin-top:24px;align-items:start}
+.diagram-wrap{background:linear-gradient(165deg,#13110c,#0c0b08);border:1px solid var(--line);border-radius:16px;padding:20px;position:relative}
+.diagram-wrap .dlabel{position:absolute;top:14px;right:18px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim)}
+.diagram-wrap svg{width:100%;height:auto;display:block}
+.side{display:flex;flex-direction:column;gap:18px}
+.points{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 22px 8px}
+.points h4{font-family:var(--serif);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:600}
+.points ul{list-style:none}
+.points li{position:relative;padding:0 0 16px 26px;font-size:14px;line-height:1.5;color:var(--ink)}
+.points li:before{content:"";position:absolute;left:4px;top:7px;width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 4px rgba(201,169,110,.13)}
+.points li b{color:var(--gold-soft);font-weight:600}
+.hook{background:linear-gradient(150deg,rgba(201,169,110,.14),rgba(201,169,110,.03));border:1px solid var(--gold-dim);border-radius:14px;padding:20px}
+.hook .htag{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.hook .htag:before{content:"✦"}
+.hook p{font-family:var(--serif);font-size:19px;line-height:1.34;color:var(--gold-soft);font-style:italic}
+.lesson-nav{display:flex;justify-content:space-between;margin-top:34px;gap:14px}
+.lesson-nav button{background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);padding:13px 22px;border-radius:10px;cursor:pointer;font-family:var(--sans);font-size:13px;transition:all .2s;display:flex;align-items:center;gap:9px}
+.lesson-nav button:hover:not(:disabled){border-color:var(--gold-dim);color:var(--gold-soft)}
+.lesson-nav button:disabled{opacity:.3;cursor:not-allowed}
+.back-link{background:none;border:none;color:var(--gold-dim);cursor:pointer;font-family:var(--sans);font-size:13px;margin-bottom:18px;display:inline-flex;align-items:center;gap:8px;transition:color .2s}
+.back-link:hover{color:var(--gold-soft)}
+
+/* SVG shared text helpers */
+svg text{font-family:'DM Sans',sans-serif}
+.svg-h{font-family:'Cormorant Garamond',serif}
+
+/* FLASHCARDS */
+.fc-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.chip{background:var(--panel);border:1px solid var(--line);color:var(--ink-dim);padding:8px 16px;border-radius:22px;cursor:pointer;font-size:12.5px;font-family:var(--sans);transition:all .2s;letter-spacing:.01em}
+.chip:hover{border-color:var(--gold-dim);color:var(--ink)}
+.chip.active{background:var(--gold);color:#1a160d;border-color:var(--gold);font-weight:600}
+.fc-btn{margin-left:auto;display:flex;gap:10px}
+.fc-btn .chip{margin:0}
+.fc-count{font-size:12px;color:var(--gold-dim);letter-spacing:.04em}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:16px}
+.flip{perspective:1400px;height:200px;cursor:pointer}
+.flip-in{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.5,.05,.3,1);transform-style:preserve-3d}
+.flip.flipped .flip-in{transform:rotateY(180deg)}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:22px;display:flex;flex-direction:column;border:1px solid var(--line)}
+.flip-front{background:linear-gradient(160deg,var(--panel),var(--bg2))}
+.flip-back{background:linear-gradient(160deg,var(--panel2),#15130e);transform:rotateY(180deg);border-color:var(--gold-dim)}
+.flip .ftopic{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim)}
+.flip-front .q{font-family:var(--serif);font-size:21px;line-height:1.22;color:var(--ink);margin:auto 0;font-weight:500}
+.flip-back .a{font-size:13.5px;line-height:1.5;color:var(--ink);margin:auto 0}
+.flip-back .a b{color:var(--gold-soft)}
+.flip .hint{font-size:10px;color:var(--gold-dim);letter-spacing:.06em;margin-top:auto}
+
+/* MCQ */
+.mcq-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.score-pill{background:var(--panel);border:1px solid var(--gold-dim);border-radius:24px;padding:9px 20px;font-size:13px;color:var(--gold-soft);letter-spacing:.04em}
+.score-pill b{color:var(--gold);font-size:16px}
+.q-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;margin-bottom:18px}
+.q-card .qn{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:10px}
+.q-card .qtext{font-family:var(--serif);font-size:22px;line-height:1.28;color:var(--ink);margin-bottom:18px;font-weight:500}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{text-align:left;background:var(--bg2);border:1px solid var(--line);color:var(--ink);padding:14px 18px;border-radius:10px;cursor:pointer;font-family:var(--sans);font-size:14px;transition:all .18s;display:flex;align-items:center;gap:13px;line-height:1.4}
+.opt .lett{flex:0 0 24px;height:24px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gold-dim);font-weight:600}
+.opt:hover:not(.locked){border-color:var(--gold-dim);background:var(--panel2)}
+.opt.correct{background:var(--green-bg);border-color:var(--green);color:#cfe4c2}
+.opt.correct .lett{background:var(--green);color:#15200f;border-color:var(--green)}
+.opt.wrong{background:var(--red-bg);border-color:var(--red);color:#e7c4bd}
+.opt.wrong .lett{background:var(--red);color:#2a100c;border-color:var(--red)}
+.opt.locked{cursor:default}
+.explain{margin-top:16px;padding:16px 18px;border-radius:10px;background:var(--bg2);border-left:3px solid var(--gold);font-size:13.5px;line-height:1.55;color:var(--ink-dim);display:none}
+.explain.show{display:block;animation:fade .35s ease}
+.explain b{color:var(--gold-soft)}
+.mcq-reset{margin-top:8px}
+
+@media(max-width:1080px){.lesson-layout{grid-template-columns:1fr}}
+@media(max-width:760px){
+  body{flex-direction:column}
+  #sidebar{width:100%;flex:none;height:auto;position:relative;flex-direction:column;padding:18px 0}
+  .nav{flex-direction:row;overflow-x:auto;padding:14px 12px}
+  .nav button{white-space:nowrap}.nav .num{display:none}
+  #main{padding:30px 20px 70px}
+  .page-head h2{font-size:32px}
+  .side-foot{display:none}
+}
+</style>
+</head>
+<body>
+<aside id="sidebar">
+  <div class="brand">
+    <div class="kicker">Hyland · Chapter 3</div>
+    <h1>Social Attitudes<br>& Science</h1>
+    <div class="sub">Applied psychology, prejudice<br>and intellectual snobbery</div>
+  </div>
+  <nav class="nav" id="nav">
+    <button data-view="overview" class="active"><span class="ic">◈</span> Overview</button>
+    <button data-view="lessons"><span class="ic">❧</span> Lessons <span class="num">15</span></button>
+    <button data-view="flashcards"><span class="ic">⚑</span> Flashcards <span class="num">34</span></button>
+    <button data-view="mcq"><span class="ic">✓</span> MCQ <span class="num">16</span></button>
+  </nav>
+  <div class="side-foot">"The opposite of prejudice is kindness."<br>— a study companion</div>
+</aside>
+<main id="main">
+
+<section class="view active" id="view-overview">
+  <div class="page-head">
+    <div class="eyebrow">Theme 2 · A self-study companion</div>
+    <h2>How do social attitudes influence science?</h2>
+    <p>Fifteen visual lessons through Hyland's third chapter — on pure versus applied psychology, the founders of the discipline, and the prejudices (especially intellectual snobbery) that shaped who got to do science. Tap any card to begin.</p>
+    <div class="rule"></div>
+  </div>
+  <div class="grid">
+    <div class="card" data-goto="01">
+      <div class="cnum">01</div>
+      <h3>Prejudice &amp; Intellectual Snobbery</h3>
+      <p>How prejudgements form and why intellectual snobbery hides in plain sight.</p>
+      <span class="tag">Lesson 1</span>
+    </div>
+    <div class="card" data-goto="02">
+      <div class="cnum">02</div>
+      <h3>Pure · Basic · Fundamental vs Applied</h3>
+      <p>Pure, basic, fundamental — three flattering masks for the same value judgement.</p>
+      <span class="tag">Lesson 2</span>
+    </div>
+    <div class="card" data-goto="03">
+      <div class="cnum">03</div>
+      <h3>Why &#x27;Pure&#x27; Was Believed Better</h3>
+      <p>Class pyramids, the caste parallel, and why Wundt chose &#x27;pure&#x27;.</p>
+      <span class="tag">Lesson 3</span>
+    </div>
+    <div class="card" data-goto="04">
+      <div class="cnum">04</div>
+      <h3>William James &amp; Applied Psychology in America</h3>
+      <p>Why applied psychology was born in the USA, not Europe.</p>
+      <span class="tag">Lesson 4</span>
+    </div>
+    <div class="card" data-goto="05">
+      <div class="cnum">05</div>
+      <h3>Structuralism vs Functionalism</h3>
+      <p>Structure vs function — the two founding paradigms of the mind.</p>
+      <span class="tag">Lesson 5</span>
+    </div>
+    <div class="card" data-goto="06">
+      <div class="cnum">06</div>
+      <h3>James&#x27;s Advice to Teachers</h3>
+      <p>Native reactions, habits, association and the forgetting curve.</p>
+      <span class="tag">Lesson 6</span>
+    </div>
+    <div class="card" data-goto="07">
+      <div class="cnum">07</div>
+      <h3>James &amp; Hall — Was It Applied Psychology?</h3>
+      <p>Influence is not impact — the case of James and Hall.</p>
+      <span class="tag">Lesson 7</span>
+    </div>
+    <div class="card" data-goto="08">
+      <div class="cnum">08</div>
+      <h3>Münsterberg &amp; the Birth of Applied Research</h3>
+      <p>Intention defines applied research; the forensic legacy of memory.</p>
+      <span class="tag">Lesson 8</span>
+    </div>
+    <div class="card" data-goto="09">
+      <div class="cnum">09</div>
+      <h3>Witmer &amp; the First Psychology Clinic</h3>
+      <p>The first clinic, and the shift from heredity to environment.</p>
+      <span class="tag">Lesson 9</span>
+    </div>
+    <div class="card" data-goto="10">
+      <div class="cnum">10</div>
+      <h3>Scott — Advertising &amp; Personnel Testing</h3>
+      <p>Persuading the consumer, testing the employee.</p>
+      <span class="tag">Lesson 10</span>
+    </div>
+    <div class="card" data-goto="11">
+      <div class="cnum">11</div>
+      <h3>Binet, Spearman &amp; the g Factor</h3>
+      <p>Many faculties or one &#x27;g&#x27;? Binet vs Spearman.</p>
+      <span class="tag">Lesson 11</span>
+    </div>
+    <div class="card" data-goto="12">
+      <div class="cnum">12</div>
+      <h3>Applied vs Pure — and How the UK Government Won</h3>
+      <p>Laputa, polytechnics and how the UK government valued impact.</p>
+      <span class="tag">Lesson 12</span>
+    </div>
+    <div class="card" data-goto="13">
+      <div class="cnum">13</div>
+      <h3>Research Impact &amp; the Three Intentions</h3>
+      <p>Reach × significance, and the three research intentions.</p>
+      <span class="tag">Lesson 13</span>
+    </div>
+    <div class="card" data-goto="14">
+      <div class="cnum">14</div>
+      <h3>Discrimination Against Women in Psychology</h3>
+      <p>The &#x27;woman problem&#x27;, the experimentalists, and the evidence.</p>
+      <span class="tag">Lesson 14</span>
+    </div>
+    <div class="card" data-goto="15">
+      <div class="cnum">15</div>
+      <h3>Academic Snobbery &amp; University League Tables</h3>
+      <p>League tables — the snobbery that survives today.</p>
+      <span class="tag">Lesson 15</span>
+    </div></div>
+</section>
+<section class="view" id="view-lessons">
+  <button class="back-link" id="back-to-grid">‹ All lessons</button>
+  
+  <div class="lesson" data-lesson="01">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 01 · Foundational concept</div>
+        <h2>Prejudice &amp; Intellectual Snobbery</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg">
+ <defs><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c9a96e"/></marker></defs>
+ <text x="320" y="30" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">How a prejudgement forms</text>
+ <!-- chain -->
+ <g font-size="13" fill="#ece6d8">
+  <rect x="20" y="58" width="120" height="56" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+  <text x="80" y="82" text-anchor="middle" fill="#c9a96e" font-size="12">A LABEL</text>
+  <text x="80" y="100" text-anchor="middle" font-size="11" fill="#a89e8a">("them", a group)</text>
+  <line x1="140" y1="86" x2="178" y2="86" stroke="#c9a96e" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="180" y="58" width="120" height="56" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+  <text x="240" y="82" text-anchor="middle" fill="#c9a96e" font-size="12">PRIOR BELIEFS</text>
+  <text x="240" y="100" text-anchor="middle" font-size="11" fill="#a89e8a">activated</text>
+  <line x1="300" y1="86" x2="338" y2="86" stroke="#c9a96e" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="340" y="58" width="120" height="56" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+  <text x="400" y="82" text-anchor="middle" fill="#c9a96e" font-size="12">PREJUDGEMENT</text>
+  <text x="400" y="100" text-anchor="middle" font-size="11" fill="#a89e8a">(everyone does it)</text>
+  <line x1="460" y1="86" x2="498" y2="86" stroke="#c9a96e" stroke-width="2" marker-end="url(#a1)"/>
+  <rect x="500" y="58" width="120" height="56" rx="9" fill="#211e16" stroke="#c9a96e"/>
+  <text x="560" y="82" text-anchor="middle" fill="#d8c294" font-size="12">BEHAVIOUR</text>
+  <text x="560" y="100" text-anchor="middle" font-size="11" fill="#a89e8a">depends on...</text>
+ </g>
+ <!-- fork: aware vs unaware -->
+ <line x1="560" y1="114" x2="560" y2="150" stroke="#c9a96e" stroke-width="2"/>
+ <line x1="300" y1="150" x2="560" y2="150" stroke="#3a3327" stroke-width="1.5"/>
+ <line x1="180" y1="150" x2="180" y2="178" stroke="#7faf6a" stroke-width="2" marker-end="url(#a1)"/>
+ <line x1="440" y1="150" x2="440" y2="178" stroke="#c97064" stroke-width="2" marker-end="url(#a1)"/>
+ <rect x="80" y="180" width="200" height="58" rx="9" fill="#1d2718" stroke="#7faf6a"/>
+ <text x="180" y="204" text-anchor="middle" fill="#cfe4c2" font-size="12.5">AWARE of prejudice</text>
+ <text x="180" y="223" text-anchor="middle" fill="#9ec08a" font-size="11">→ can reduce its effects</text>
+ <rect x="340" y="180" width="200" height="58" rx="9" fill="#2a1815" stroke="#c97064"/>
+ <text x="440" y="204" text-anchor="middle" fill="#e7c4bd" font-size="12.5">UNAWARE</text>
+ <text x="440" y="223" text-anchor="middle" fill="#cf9a90" font-size="11">→ prejudice runs unchecked</text>
+ <!-- forms of prejudice tree -->
+ <text x="320" y="290" text-anchor="middle" class="svg-h" font-size="19" fill="#d8c294">Prejudice takes many forms</text>
+ <line x1="320" y1="300" x2="320" y2="320" stroke="#c9a96e" stroke-width="2"/>
+ <line x1="90" y1="320" x2="550" y2="320" stroke="#3a3327"/>
+ <g font-size="12" text-anchor="middle">
+  <line x1="90" y1="320" x2="90" y2="344" stroke="#3a3327"/><rect x="36" y="346" width="108" height="40" rx="8" fill="#1c1a14" stroke="#3a3327"/><text x="90" y="370" fill="#a89e8a">Race (Ch.7)</text>
+  <line x1="235" y1="320" x2="235" y2="344" stroke="#3a3327"/><rect x="181" y="346" width="108" height="40" rx="8" fill="#1c1a14" stroke="#3a3327"/><text x="235" y="370" fill="#a89e8a">Gender</text>
+  <line x1="405" y1="320" x2="405" y2="344" stroke="#3a3327"/><rect x="351" y="346" width="108" height="40" rx="8" fill="#1c1a14" stroke="#3a3327"/><text x="405" y="370" fill="#a89e8a">Caste / class</text>
+  <line x1="550" y1="320" x2="550" y2="344" stroke="#c9a96e"/><rect x="488" y="346" width="124" height="40" rx="8" fill="#211e16" stroke="#c9a96e"/><text x="550" y="365" fill="#d8c294" font-size="11.5">Intellectual</text><text x="550" y="379" fill="#d8c294" font-size="11.5">snobbery ★</text>
+ </g>
+ <text x="320" y="420" text-anchor="middle" font-size="12.5" fill="#a89e8a">This chapter's focus: the rarely-named prejudice —</text>
+ <text x="320" y="440" text-anchor="middle" font-size="12.5" fill="#c9a96e">"pure science is better than applied; women are unsuited to it."</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li><b>Prejudice = to prejudge</b> — judgements built on prior beliefs, not the thing itself.</li><li>Merely <b>labelling</b> something triggers prejudgement, whatever the label (Billig & Tajfel, 1973). So <b>everyone</b> prejudges.</li><li>What differs is the <b>response</b>: being aware of prejudice is the first step to reducing it.</li><li>Forms include race, gender and caste/class — but also the seldom-named <b>intellectual snobbery</b>.</li><li>In psychology this snobbery produced two myths: that <b>pure science beats applied</b>, and that <b>women cannot be psychologists</b>.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Everyone prejudges; only the aware can disarm it. Label → belief → prejudgement → behaviour.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="02">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 02 · Terminology</div>
+        <h2>Pure · Basic · Fundamental vs Applied</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 450" xmlns="http://www.w3.org/2000/svg">
+ <text x="320" y="30" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Words carry hidden attitudes</text>
+ <!-- left column: the noble words -->
+ <rect x="24" y="56" width="270" height="330" rx="14" fill="#13110c" stroke="#c9a96e"/>
+ <text x="159" y="86" text-anchor="middle" class="svg-h" font-size="20" fill="#d8c294">"NON-APPLIED"</text>
+ <text x="159" y="106" text-anchor="middle" font-size="11" fill="#a89e8a">framed as noble &amp; high-status</text>
+ <g font-size="13">
+  <rect x="44" y="124" width="230" height="74" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+  <text x="60" y="148" fill="#c9a96e" font-size="15" class="svg-h">PURE</text>
+  <text x="60" y="170" fill="#ece6d8" font-size="11.5">connotation: noble &amp; good</text>
+  <text x="60" y="187" fill="#a89e8a" font-size="11">(so "applied" = dirty &amp; bad?)</text>
+  <rect x="44" y="208" width="230" height="74" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+  <text x="60" y="232" fill="#c9a96e" font-size="15" class="svg-h">BASIC</text>
+  <text x="60" y="254" fill="#ece6d8" font-size="11.5">connotation: done FIRST</text>
+  <text x="60" y="271" fill="#a89e8a" font-size="11">(applied comes after)</text>
+  <rect x="44" y="292" width="230" height="80" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+  <text x="60" y="316" fill="#c9a96e" font-size="15" class="svg-h">FUNDAMENTAL</text>
+  <text x="60" y="338" fill="#ece6d8" font-size="11.5">connotation: deals with</text>
+  <text x="60" y="354" fill="#ece6d8" font-size="11.5">more general / important issues</text>
+ </g>
+ <!-- vs -->
+ <circle cx="320" cy="221" r="26" fill="#211e16" stroke="#c9a96e"/>
+ <text x="320" y="227" text-anchor="middle" class="svg-h" font-size="20" fill="#d8c294">vs</text>
+ <!-- right column: applied -->
+ <rect x="346" y="56" width="270" height="330" rx="14" fill="#13110c" stroke="#3a3327"/>
+ <text x="481" y="86" text-anchor="middle" class="svg-h" font-size="20" fill="#a89e8a">"APPLIED"</text>
+ <text x="481" y="106" text-anchor="middle" font-size="11" fill="#a89e8a">framed as lesser by contrast</text>
+ <rect x="366" y="130" width="230" height="160" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="481" y="170" text-anchor="middle" class="svg-h" font-size="16" fill="#ece6d8">Research aimed at</text>
+ <text x="481" y="196" text-anchor="middle" class="svg-h" font-size="16" fill="#ece6d8">solving a practical problem</text>
+ <text x="481" y="232" text-anchor="middle" font-size="12" fill="#a89e8a">Each "noble" word implies its</text>
+ <text x="481" y="250" text-anchor="middle" font-size="12" fill="#a89e8a">opposite is inferior —</text>
+ <text x="481" y="268" text-anchor="middle" font-size="12" fill="#c97064">that implication is the snobbery.</text>
+ <text x="481" y="330" text-anchor="middle" font-size="12.5" fill="#c9a96e">All three labels reflect the</text>
+ <text x="481" y="348" text-anchor="middle" font-size="12.5" fill="#c9a96e">attitudes of those drawing the line.</text>
+ <text x="320" y="420" text-anchor="middle" font-size="12.5" fill="#a89e8a">The vocabulary is not neutral — it smuggles in a value judgement.</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>Three words mark the contrast with applied: <b>pure, basic, fundamental</b> — each with a different flavour.</li><li><b>Pure</b> implies noble and good — making 'applied' sound dirty and bad by opposition.</li><li><b>Basic</b> implies something done <b>first</b>; <b>fundamental</b> implies dealing with more important issues.</li><li>The labels are not descriptive but <b>attitudinal</b> — they encode the speaker's prejudice.</li><li>Applied research is simply work aimed at <b>solving a practical problem</b> — not inherently lesser.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Pure = noble, Basic = first, Fundamental = important. Three flattering masks for the same snobbery.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="03">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 03 · Social history</div>
+        <h2>Why &#x27;Pure&#x27; Was Believed Better</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg">
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Status pyramids: who did "pure", who did "applied"</text>
+ <!-- English class pyramid -->
+ <text x="160" y="62" text-anchor="middle" font-size="12" fill="#c9a96e" letter-spacing="1">EUROPEAN CLASS</text>
+ <polygon points="160,72 110,128 210,128" fill="#211e16" stroke="#c9a96e"/>
+ <text x="160" y="106" text-anchor="middle" font-size="10.5" fill="#d8c294">Gentry &amp;</text>
+ <text x="160" y="119" text-anchor="middle" font-size="10.5" fill="#d8c294">aristocracy</text>
+ <polygon points="110,132 210,132 250,210 70,210" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="160" y="170" text-anchor="middle" font-size="10.5" fill="#a89e8a">Everyone else —</text>
+ <text x="160" y="185" text-anchor="middle" font-size="10.5" fill="#a89e8a">who worked &amp; provided</text>
+ <text x="160" y="234" text-anchor="middle" font-size="11" fill="#c9a96e">Top did "pure" (no work)</text>
+ <text x="160" y="249" text-anchor="middle" font-size="11" fill="#a89e8a">Bottom did "applied" (work)</text>
+ <!-- Indian caste pyramid -->
+ <text x="480" y="62" text-anchor="middle" font-size="12" fill="#c9a96e" letter-spacing="1">INDIAN CASTE</text>
+ <polygon points="480,72 430,128 530,128" fill="#211e16" stroke="#c9a96e"/>
+ <text x="480" y="112" text-anchor="middle" font-size="10.5" fill="#d8c294">Brahmins</text>
+ <polygon points="430,132 530,132 570,210 390,210" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="480" y="178" text-anchor="middle" font-size="10.5" fill="#a89e8a">Dalits (menial work)</text>
+ <text x="480" y="234" text-anchor="middle" font-size="11" fill="#c9a96e">Priests/teachers/judges on top</text>
+ <text x="480" y="249" text-anchor="middle" font-size="11" fill="#a89e8a">Manual labour at the bottom</text>
+ <line x1="320" y1="70" x2="320" y2="250" stroke="#3a3327" stroke-dasharray="4 4"/>
+ <text x="320" y="150" text-anchor="middle" font-size="13" class="svg-h" fill="#d8c294" transform="rotate(0 320 150)">same</text>
+ <text x="320" y="168" text-anchor="middle" font-size="13" class="svg-h" fill="#d8c294">logic</text>
+ <!-- universities timeline -->
+ <text x="320" y="290" text-anchor="middle" class="svg-h" font-size="18" fill="#d8c294">Applied subjects slowly climb into the university</text>
+ <line x1="60" y1="330" x2="600" y2="330" stroke="#c9a96e" stroke-width="2"/>
+ <g font-size="10.5" text-anchor="middle" fill="#a89e8a">
+  <circle cx="110" cy="330" r="4" fill="#c9a96e"/><text x="110" y="318" fill="#d8c294">1853</text><text x="110" y="352">Science &amp; Art Dept</text>
+  <circle cx="240" cy="330" r="4" fill="#c9a96e"/><text x="240" y="318" fill="#d8c294">1884</text><text x="240" y="352">Technical Instruction Act</text>
+  <circle cx="400" cy="330" r="4" fill="#c9a96e"/><text x="400" y="318" fill="#d8c294">1992</text><text x="400" y="352">Physiotherapy → graduate</text>
+  <circle cx="540" cy="330" r="4" fill="#c9a96e"/><text x="540" y="318" fill="#d8c294">2000</text><text x="540" y="352">Nursing → degree-level</text>
+ </g>
+ <rect x="90" y="380" width="460" height="64" rx="10" fill="#211e16" stroke="#c9a96e"/>
+ <text x="320" y="406" text-anchor="middle" font-size="13" fill="#d8c294" class="svg-h">Wundt's move (Leipzig): brand psychology "PURE"</text>
+ <text x="320" y="428" text-anchor="middle" font-size="11.5" fill="#a89e8a">so it earns high-status university life, not low-status technical-college life</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>Pre-industrial Europe split into a leisured <b>gentry/aristocracy</b> (did 'pure') and everyone else who <b>worked</b> ('applied').</li><li>The <b>Indian caste system</b> mirrors this: Brahmin priests/teachers on top, Dalit manual labour at the bottom.</li><li>Universities taught the <b>classics</b>; practical subjects sat in technical colleges and only slowly moved in (physiotherapy 1992, nursing 2000).</li><li><b>Wundt</b> branded his new Leipzig psychology 'pure' so it would fit high-status university life.</li><li>Useful results came anyway — <b>reaction-time</b> research solved astronomers' timing errors (Williams, 1912).</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>The leisured class did &#x27;pure&#x27;; the workers did &#x27;applied&#x27;. Wundt wanted psychology in the gentleman&#x27;s wing.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="04">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 04 · The American turn</div>
+        <h2>William James &amp; Applied Psychology in America</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg">
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Two continents, two value systems</text>
+ <rect x="24" y="52" width="282" height="150" rx="13" fill="#13110c" stroke="#3a3327"/>
+ <text x="165" y="80" text-anchor="middle" class="svg-h" font-size="18" fill="#d8c294">EUROPE</text>
+ <text x="165" y="108" text-anchor="middle" font-size="12.5" fill="#ece6d8">Wealth &amp; class = HEREDITARY</text>
+ <text x="165" y="134" text-anchor="middle" font-size="12.5" fill="#a89e8a">→ "pure" carries high status</text>
+ <text x="165" y="160" text-anchor="middle" font-size="12.5" fill="#a89e8a">→ Wundt: psychology as PURE</text>
+ <text x="165" y="186" text-anchor="middle" font-size="11.5" fill="#c9a96e">Father of psychology (institution)</text>
+ <rect x="334" y="52" width="282" height="150" rx="13" fill="#13110c" stroke="#c9a96e"/>
+ <text x="475" y="80" text-anchor="middle" class="svg-h" font-size="18" fill="#d8c294">AMERICA</text>
+ <text x="475" y="108" text-anchor="middle" font-size="12.5" fill="#ece6d8">Wealth &amp; class = PRACTICAL success</text>
+ <text x="475" y="134" text-anchor="middle" font-size="12.5" fill="#a89e8a">→ "applied" is respected</text>
+ <text x="475" y="160" text-anchor="middle" font-size="12.5" fill="#a89e8a">→ science = solving problems</text>
+ <text x="475" y="186" text-anchor="middle" font-size="11.5" fill="#c9a96e">James: father of US psychology</text>
+ <!-- timeline first-course paradox -->
+ <text x="320" y="244" text-anchor="middle" class="svg-h" font-size="17" fill="#d8c294">A timing paradox</text>
+ <line x1="120" y1="288" x2="520" y2="288" stroke="#c9a96e" stroke-width="2"/>
+ <circle cx="200" cy="288" r="6" fill="#c9a96e"/><text x="200" y="274" text-anchor="middle" font-size="11" fill="#d8c294">1872</text>
+ <text x="200" y="312" text-anchor="middle" font-size="10.5" fill="#a89e8a">First course titled</text><text x="200" y="325" text-anchor="middle" font-size="10.5" fill="#a89e8a">"Psychology" — Harvard</text>
+ <circle cx="430" cy="288" r="6" fill="#8a7448"/><text x="430" y="274" text-anchor="middle" font-size="11" fill="#d8c294">1879</text>
+ <text x="430" y="312" text-anchor="middle" font-size="10.5" fill="#a89e8a">Wundt begins teaching</text><text x="430" y="325" text-anchor="middle" font-size="10.5" fill="#a89e8a">at Leipzig</text>
+ <text x="320" y="354" text-anchor="middle" font-size="11.5" fill="#c9a96e">Harvard's title came 5 years earlier — but it was not yet scientific psychology.</text>
+ <!-- James bio strip -->
+ <rect x="60" y="376" width="520" height="68" rx="10" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="320" y="400" text-anchor="middle" font-size="12.5" fill="#d8c294" class="svg-h">William James (1842–1910)</text>
+ <text x="320" y="421" text-anchor="middle" font-size="11" fill="#a89e8a">Wealthy liberal-artistic family · brother = novelist Henry James · trained artist → MD (1869)</text>
+ <text x="320" y="437" text-anchor="middle" font-size="11" fill="#a89e8a">Suffered depression &amp; neurasthenia (ME/CFS) · "Principles of Psychology" 1890 · "Talks to Teachers" 1899</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>European status was <b>hereditary</b>, so 'pure' ranked high; American status came from <b>practical success</b>, so applied was respected.</li><li>Hence <b>applied psychology begins in the USA</b> — science was valued because it solved problems.</li><li><b>Wundt</b> = father of psychology as an institution; <b>William James</b> = father of American (applied) psychology.</li><li>Harvard's first 'Psychology' course (1872) predated Wundt's Leipzig teaching (1879) — but wasn't yet scientific.</li><li>James himself struggled with <b>depression and neurasthenia</b>; his works include <i>Principles of Psychology</i> (1890).</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Europe inherited status → loved &#x27;pure&#x27;. America earned it → loved &#x27;applied&#x27;. So applied psychology was born in the USA.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="05">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 05 · Competing paradigms</div>
+        <h2>Structuralism vs Functionalism</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg">
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Two ways to study the mind</text>
+ <!-- influences feeding functionalism -->
+ <rect x="40" y="48" width="150" height="44" rx="8" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="115" y="68" text-anchor="middle" font-size="12" fill="#c9a96e">Darwin (1859)</text><text x="115" y="84" text-anchor="middle" font-size="10" fill="#a89e8a">structures fit their USE</text>
+ <rect x="40" y="100" width="150" height="44" rx="8" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="115" y="120" text-anchor="middle" font-size="12" fill="#c9a96e">Peirce: pragmatism</text><text x="115" y="136" text-anchor="middle" font-size="10" fill="#a89e8a">behaviour must be adaptive</text>
+ <path d="M190 70 Q230 96 256 110" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+ <path d="M190 122 Q220 116 256 114" fill="none" stroke="#c9a96e" stroke-width="1.5"/>
+ <text x="300" y="115" text-anchor="middle" font-size="11" fill="#d8c294">feed →</text>
+ <!-- two columns -->
+ <rect x="40" y="170" width="270" height="210" rx="13" fill="#13110c" stroke="#3a3327"/>
+ <text x="175" y="198" text-anchor="middle" class="svg-h" font-size="19" fill="#d8c294">STRUCTURALISM</text>
+ <text x="175" y="218" text-anchor="middle" font-size="11" fill="#a89e8a">Wundt · Titchener</text>
+ <text x="60" y="248" font-size="12" fill="#ece6d8">• Study the STRUCTURE of mind</text>
+ <text x="60" y="270" font-size="12" fill="#ece6d8">  for its own sake</text>
+ <text x="60" y="296" font-size="12" fill="#ece6d8">• "Brick-wall" hypothesis:</text>
+ <text x="60" y="316" font-size="12" fill="#ece6d8">  consciousness = components</text>
+ <text x="60" y="344" font-size="12" fill="#ece6d8">• Method: introspection</text>
+ <text x="60" y="366" font-size="11" fill="#c9a96e">  Pure-science ethos</text>
+ <rect x="330" y="170" width="270" height="210" rx="13" fill="#13110c" stroke="#c9a96e"/>
+ <text x="465" y="198" text-anchor="middle" class="svg-h" font-size="19" fill="#d8c294">FUNCTIONALISM</text>
+ <text x="465" y="218" text-anchor="middle" font-size="11" fill="#a89e8a">James · Dewey · Angell</text>
+ <text x="350" y="248" font-size="12" fill="#ece6d8">• Mind has a FUNCTION:</text>
+ <text x="350" y="268" font-size="12" fill="#ece6d8">  it controls behaviour</text>
+ <text x="350" y="296" font-size="12" fill="#ece6d8">• "Coalescence": consciousness</text>
+ <text x="350" y="316" font-size="12" fill="#ece6d8">  flows as a STREAM</text>
+ <text x="350" y="344" font-size="12" fill="#ece6d8">• Method: introspection too —</text>
+ <text x="350" y="366" font-size="11" fill="#c9a96e">  but for different reasons</text>
+ <text x="320" y="278" text-anchor="middle" class="svg-h" font-size="22" fill="#8a7448">vs</text>
+ <!-- bottom note -->
+ <rect x="90" y="400" width="460" height="56" rx="10" fill="#211e16" stroke="#c9a96e"/>
+ <text x="320" y="424" text-anchor="middle" font-size="12" fill="#d8c294">Angell coined "functionalism" in his 1906 APA presidential address</text>
+ <text x="320" y="444" text-anchor="middle" font-size="11" fill="#a89e8a">Both paradigms used introspection — they simply disagreed on what it was FOR</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>James drew on <b>Darwin</b> (structures fit their use) and <b>Peirce's pragmatism</b> (behaviour must be adaptive).</li><li><b>Structuralism</b> (Wundt, Titchener): study the mind's structure for its own sake — the 'brick-wall' view.</li><li><b>Functionalism</b> (James, Dewey, Angell): the mind has a <b>function</b> — it controls behaviour; consciousness is a flowing 'stream'.</li><li>Both relied on <b>introspection</b>, but used it for different reasons.</li><li><b>Angell</b> coined the term 'functionalism' in his 1906 APA presidential address.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Structuralism asks WHAT the mind is made of; functionalism asks WHAT the mind is for.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="06">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 06 · Educational psychology</div>
+        <h2>James&#x27;s Advice to Teachers</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg">
+ <defs><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c9a96e"/></marker></defs>
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Building habits from native reactions</text>
+ <!-- native reactions -> habits -->
+ <rect x="30" y="52" width="210" height="120" rx="12" fill="#13110c" stroke="#c9a96e"/>
+ <text x="135" y="78" text-anchor="middle" class="svg-h" font-size="16" fill="#d8c294">NATIVE REACTIONS</text>
+ <text x="135" y="96" text-anchor="middle" font-size="10.5" fill="#a89e8a">instinctive responses</text>
+ <text x="135" y="120" text-anchor="middle" font-size="12" fill="#ece6d8">curiosity · fear</text>
+ <text x="135" y="140" text-anchor="middle" font-size="12" fill="#ece6d8">imitation · ambition</text>
+ <text x="135" y="160" text-anchor="middle" font-size="10.5" fill="#c9a96e">movement &amp; novelty hook them</text>
+ <line x1="240" y1="112" x2="296" y2="112" stroke="#c9a96e" stroke-width="2" marker-end="url(#a6)"/>
+ <text x="268" y="103" text-anchor="middle" font-size="10" fill="#d8c294">exploit</text>
+ <rect x="300" y="52" width="210" height="120" rx="12" fill="#211e16" stroke="#c9a96e"/>
+ <text x="405" y="78" text-anchor="middle" class="svg-h" font-size="16" fill="#d8c294">HABITS</text>
+ <text x="405" y="96" text-anchor="middle" font-size="10.5" fill="#a89e8a">acquired responses</text>
+ <text x="405" y="122" text-anchor="middle" font-size="12" fill="#ece6d8">run without</text>
+ <text x="405" y="140" text-anchor="middle" font-size="12" fill="#ece6d8">conscious intention</text>
+ <text x="405" y="162" text-anchor="middle" font-size="10.5" fill="#c9a96e">the teacher's real goal</text>
+ <text x="572" y="100" text-anchor="middle" font-size="11" fill="#a89e8a">"You may take</text>
+ <text x="572" y="116" text-anchor="middle" font-size="11" fill="#a89e8a">a horse to</text>
+ <text x="572" y="132" text-anchor="middle" font-size="11" fill="#a89e8a">water..."</text>
+ <!-- association web -->
+ <text x="160" y="208" text-anchor="middle" class="svg-h" font-size="16" fill="#d8c294">Learn by association</text>
+ <circle cx="80" cy="270" r="30" fill="#211e16" stroke="#c9a96e"/><text x="80" y="266" text-anchor="middle" font-size="11" fill="#d8c294">NEW</text><text x="80" y="280" text-anchor="middle" font-size="11" fill="#d8c294">idea</text>
+ <g stroke="#8a7448" stroke-width="1.3">
+  <line x1="108" y1="258" x2="170" y2="232"/><line x1="110" y1="270" x2="180" y2="270"/><line x1="108" y1="284" x2="172" y2="312"/><line x1="98" y1="296" x2="135" y2="330"/>
+ </g>
+ <g fill="#1c1a14" stroke="#3a3327"><circle cx="184" cy="228" r="16"/><circle cx="196" cy="270" r="16"/><circle cx="186" cy="316" r="16"/><circle cx="148" cy="338" r="14"/></g>
+ <text x="250" y="262" font-size="11.5" fill="#ece6d8">Link new to MANY old ideas</text>
+ <text x="250" y="282" font-size="11.5" fill="#ece6d8">→ no cramming; learn gradually</text>
+ <text x="250" y="302" font-size="11" fill="#c9a96e">(seed of problem-based learning)</text>
+ <!-- ebbinghaus curve -->
+ <text x="470" y="208" text-anchor="middle" class="svg-h" font-size="16" fill="#d8c294">Ebbinghaus forgetting</text>
+ <line x1="370" y1="240" x2="370" y2="350" stroke="#3a3327"/><line x1="370" y1="350" x2="590" y2="350" stroke="#3a3327"/>
+ <path d="M370 248 Q400 320 460 338 T590 348" fill="none" stroke="#c9a96e" stroke-width="2.5"/>
+ <text x="356" y="248" text-anchor="end" font-size="9" fill="#a89e8a">memory</text>
+ <text x="480" y="368" text-anchor="middle" font-size="9" fill="#a89e8a">time →</text>
+ <text x="470" y="300" font-size="10.5" fill="#ece6d8">fast at first,</text><text x="470" y="314" font-size="10.5" fill="#ece6d8">then slows</text>
+ <text x="470" y="338" font-size="9.5" fill="#c9a96e">recognition &gt; recall</text>
+ <!-- bottom: untested -->
+ <rect x="80" y="392" width="480" height="62" rx="10" fill="#2a1815" stroke="#c97064"/>
+ <text x="320" y="416" text-anchor="middle" font-size="12.5" fill="#e7c4bd" class="svg-h">The catch: James never TESTED his advice on children</text>
+ <text x="320" y="438" text-anchor="middle" font-size="11" fill="#cf9a90">Sound theoretical speculation by deduction — but not scientific (no independent data)</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>James split behaviour into <b>native reactions</b> (instinctive: curiosity, fear, imitation, ambition) and <b>habits</b> (acquired, automatic).</li><li>Good teaching <b>builds habits from native reactions</b> — using movement and novelty to hook attention.</li><li>Learning works by <b>association</b>: tie new ideas to many old ones, so he argued against <b>cramming</b> (echoed by problem-based learning).</li><li>Citing <b>Ebbinghaus</b>: forgetting is fast at first then slows; <b>recognition</b> survives even when recall fails — so exams may be poor assessment.</li><li>Crucially, James <b>never tested</b> his recommendations on children — they are deduction from theory, not evidence.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Native reaction → habit, linked to many old ideas. Wise advice — but untested, so not yet science.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="07">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 07 · The impact question</div>
+        <h2>James &amp; Hall — Was It Applied Psychology?</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg">
+ <defs><marker id="a7" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c9a96e"/></marker></defs>
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Did it have application? Did it count as "applied"?</text>
+ <!-- decision tree -->
+ <rect x="240" y="48" width="160" height="50" rx="9" fill="#211e16" stroke="#c9a96e"/>
+ <text x="320" y="70" text-anchor="middle" font-size="12.5" fill="#d8c294">Their work on education</text>
+ <text x="320" y="88" text-anchor="middle" font-size="11" fill="#a89e8a">influenced practice — yes</text>
+ <line x1="320" y1="98" x2="320" y2="124" stroke="#c9a96e" stroke-width="2"/>
+ <rect x="220" y="126" width="200" height="44" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="320" y="153" text-anchor="middle" font-size="12.5" fill="#ece6d8">But was it based on TESTED research?</text>
+ <line x1="320" y1="170" x2="200" y2="200" stroke="#c97064" stroke-width="2" marker-end="url(#a7)"/>
+ <line x1="320" y1="170" x2="445" y2="200" stroke="#7faf6a" stroke-width="2" marker-end="url(#a7)"/>
+ <text x="240" y="190" font-size="11" fill="#c97064">NO (James, Hall)</text>
+ <text x="400" y="190" font-size="11" fill="#7faf6a">YES (Münsterberg+)</text>
+ <rect x="60" y="202" width="240" height="78" rx="10" fill="#2a1815" stroke="#c97064"/>
+ <text x="180" y="226" text-anchor="middle" font-size="12.5" fill="#e7c4bd">Theory from OBSERVATION</text>
+ <text x="180" y="246" text-anchor="middle" font-size="11" fill="#cf9a90">never tested on real pupils</text>
+ <text x="180" y="268" text-anchor="middle" font-size="11.5" fill="#c97064">→ does NOT count as "impact"</text>
+ <rect x="340" y="202" width="240" height="78" rx="10" fill="#1d2718" stroke="#7faf6a"/>
+ <text x="460" y="226" text-anchor="middle" font-size="12.5" fill="#cfe4c2">Recommendations from EVIDENCE</text>
+ <text x="460" y="246" text-anchor="middle" font-size="11" fill="#9ec08a">experiments / assessment methods</text>
+ <text x="460" y="268" text-anchor="middle" font-size="11.5" fill="#7faf6a">→ qualifies as research impact</text>
+ <!-- james vs hall contrast -->
+ <text x="320" y="316" text-anchor="middle" class="svg-h" font-size="16" fill="#d8c294">Mentor &amp; rival</text>
+ <rect x="60" y="332" width="240" height="104" rx="10" fill="#13110c" stroke="#3a3327"/>
+ <text x="180" y="356" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">William James</text>
+ <text x="180" y="377" text-anchor="middle" font-size="11" fill="#a89e8a">wealthy LIBERAL family</text>
+ <text x="180" y="395" text-anchor="middle" font-size="11" fill="#a89e8a">teacher &amp; educator</text>
+ <text x="180" y="413" text-anchor="middle" font-size="11" fill="#a89e8a">close to brother Henry James</text>
+ <text x="180" y="430" text-anchor="middle" font-size="10" fill="#c9a96e">"Aspern Papers" warns of ruthless academics</text>
+ <rect x="340" y="332" width="240" height="104" rx="10" fill="#13110c" stroke="#3a3327"/>
+ <text x="460" y="356" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">Stanley Hall</text>
+ <text x="460" y="377" text-anchor="middle" font-size="11" fill="#a89e8a">wealthy CONSERVATIVE family</text>
+ <text x="460" y="395" text-anchor="middle" font-size="11" fill="#a89e8a">administrator &amp; founder</text>
+ <text x="460" y="413" text-anchor="middle" font-size="11" fill="#a89e8a">1st US lab 1883 · APA 1892</text>
+ <text x="460" y="430" text-anchor="middle" font-size="10" fill="#c9a96e">founded APA while James was out of town!</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>James and Hall <b>influenced education heavily</b> — but never tested their theories on actual pupils.</li><li>By modern criteria their work created <b>no 'impact'</b>: impact must be based on research, not observation-led theory.</li><li><b>Stanley Hall</b> (1846–1924) was the administrator: first US psychology lab (1883), founded the <b>APA in 1892</b>.</li><li>Hall's 1904 adolescence textbook and his call for <b>sex-segregated schooling</b> shaped (now largely rejected) policy.</li><li>James (liberal) and Hall (conservative) clashed — Hall founded the APA while James was <b>out of town</b>.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Influence ≠ impact. Impact needs tested research; James &amp; Hall had only observation-led theory.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="08">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 08 · Forensic psychology</div>
+        <h2>Münsterberg &amp; the Birth of Applied Research</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Applied research is defined by INTENTION</text>
+ <!-- the analogy -->
+ <rect x="60" y="48" width="220" height="58" rx="10" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="170" y="72" text-anchor="middle" font-size="13" fill="#a89e8a">BASIC / experimental</text>
+ <text x="170" y="92" text-anchor="middle" font-size="11" fill="#a89e8a">like PHYSICS</text>
+ <text x="320" y="82" text-anchor="middle" class="svg-h" font-size="18" fill="#c9a96e">is to</text>
+ <rect x="360" y="48" width="220" height="58" rx="10" fill="#211e16" stroke="#c9a96e"/>
+ <text x="470" y="72" text-anchor="middle" font-size="13" fill="#d8c294">APPLIED psychology</text>
+ <text x="470" y="92" text-anchor="middle" font-size="11" fill="#a89e8a">like ENGINEERING</text>
+ <text x="320" y="128" text-anchor="middle" font-size="11.5" fill="#a89e8a">The difference is not pure vs dirty — it is whether you START from a practical problem.</text>
+ <!-- forensic findings grid -->
+ <text x="320" y="162" text-anchor="middle" class="svg-h" font-size="16" fill="#d8c294">What his experiments showed</text>
+ <g>
+  <rect x="40" y="178" width="266" height="62" rx="9" fill="#13110c" stroke="#3a3327"/>
+  <text x="56" y="200" font-size="12.5" fill="#c9a96e">① Witnesses are unreliable</text>
+  <text x="56" y="220" font-size="10.5" fill="#a89e8a">staged arguments → inaccurate reports</text>
+  <rect x="334" y="178" width="266" height="62" rx="9" fill="#13110c" stroke="#3a3327"/>
+  <text x="350" y="200" font-size="12.5" fill="#c9a96e">② People are suggestible</text>
+  <text x="350" y="220" font-size="10.5" fill="#a89e8a">"invented" objects not in picture; kids worse</text>
+  <rect x="40" y="248" width="266" height="62" rx="9" fill="#13110c" stroke="#3a3327"/>
+  <text x="56" y="270" font-size="12.5" fill="#c9a96e">③ False confessions</text>
+  <text x="56" y="290" font-size="10.5" fill="#a89e8a">pressure → reporting what you did not do</text>
+  <rect x="334" y="248" width="266" height="62" rx="9" fill="#13110c" stroke="#3a3327"/>
+  <text x="350" y="270" font-size="12.5" fill="#c9a96e">④ Early lie detection</text>
+  <text x="350" y="290" font-size="10.5" fill="#a89e8a">"dangerous" words → longer reaction times</text>
+ </g>
+ <!-- three principles -->
+ <rect x="40" y="324" width="560" height="98" rx="11" fill="#211e16" stroke="#c9a96e"/>
+ <text x="320" y="348" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">Three principles still true in forensic psychology</text>
+ <text x="60" y="374" font-size="11.5" fill="#ece6d8">1 · Collect eyewitness testimony ASAP — forgetting grows with time</text>
+ <text x="60" y="396" font-size="11.5" fill="#ece6d8">2 · Avoid leading questions — they induce false memories</text>
+ <text x="60" y="418" font-size="11.5" fill="#ece6d8">3 · A witness can sincerely "remember" something that is false</text>
+ <text x="320" y="448" text-anchor="middle" font-size="11" fill="#a89e8a">Later disliked for his vain "Herr Doctor Professor" style &amp; pro-German stance — rarely cited after his death.</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li><b>Hugo Münsterberg</b> (1863–1916), a critic of Wundt, is the <b>father of applied psychology</b> — invited to Harvard by James in 1897.</li><li>He defined applied research by the researcher's <b>intention</b> to solve a practical problem: applied is to experimental as <b>engineering is to physics</b>.</li><li>His forensic experiments showed witnesses are <b>unreliable</b>, people are <b>suggestible</b> (children more so), and <b>false confessions</b> occur under pressure.</li><li>His early <b>lie-detection</b> work: emotionally charged words produce much longer association times.</li><li>His three rules endure: gather testimony fast, avoid leading questions, and accept that <b>sincere memories can be false</b>.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Applied = engineering to basic science&#x27;s physics. Münsterberg proved memory lies — even when the witness is honest.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="09">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 09 · Clinical psychology</div>
+        <h2>Witmer &amp; the First Psychology Clinic</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg">
+ <defs><marker id="a9" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c9a96e"/></marker></defs>
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">From moral treatment to scientific environment</text>
+ <!-- shift heredity -> environment -->
+ <rect x="40" y="50" width="230" height="70" rx="11" fill="#13110c" stroke="#3a3327"/>
+ <text x="155" y="76" text-anchor="middle" font-size="13" fill="#a89e8a">OLD belief: mental illness is</text>
+ <text x="155" y="98" text-anchor="middle" class="svg-h" font-size="16" fill="#c97064">biological &amp; hereditary</text>
+ <text x="155" y="113" text-anchor="middle" font-size="10" fill="#a89e8a">→ little can be done</text>
+ <line x1="270" y1="85" x2="368" y2="85" stroke="#c9a96e" stroke-width="2" marker-end="url(#a9)"/>
+ <text x="320" y="76" text-anchor="middle" font-size="10" fill="#d8c294">Witmer's shift</text>
+ <rect x="372" y="50" width="230" height="70" rx="11" fill="#211e16" stroke="#7faf6a"/>
+ <text x="487" y="76" text-anchor="middle" font-size="13" fill="#9ec08a">NEW: cause is a poor</text>
+ <text x="487" y="98" text-anchor="middle" class="svg-h" font-size="16" fill="#7faf6a">ENVIRONMENT</text>
+ <text x="487" y="113" text-anchor="middle" font-size="10" fill="#9ec08a">→ improve it &amp; people recover</text>
+ <!-- two roots of environmentalism -->
+ <text x="320" y="152" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">Two routes to the same idea</text>
+ <rect x="60" y="166" width="230" height="86" rx="10" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="175" y="190" text-anchor="middle" font-size="12.5" fill="#c9a96e">MORAL treatment</text>
+ <text x="175" y="210" text-anchor="middle" font-size="10.5" fill="#a89e8a">religious / non-medical</text>
+ <text x="175" y="228" text-anchor="middle" font-size="10.5" fill="#a89e8a">Tuke (York Retreat)</text>
+ <text x="175" y="244" text-anchor="middle" font-size="10.5" fill="#a89e8a">Dorothea Dix (USA reform)</text>
+ <rect x="350" y="166" width="230" height="86" rx="10" fill="#1c1a14" stroke="#c9a96e"/>
+ <text x="465" y="190" text-anchor="middle" font-size="12.5" fill="#c9a96e">SCIENTIFIC version</text>
+ <text x="465" y="210" text-anchor="middle" font-size="10.5" fill="#a89e8a">Witmer brings it into</text>
+ <text x="465" y="228" text-anchor="middle" font-size="10.5" fill="#a89e8a">the scientific sphere</text>
+ <text x="465" y="244" text-anchor="middle" font-size="10.5" fill="#a89e8a">emphasis on MEASUREMENT</text>
+ <!-- timeline witmer -->
+ <line x1="80" y1="296" x2="560" y2="296" stroke="#c9a96e" stroke-width="2"/>
+ <g text-anchor="middle" font-size="10">
+  <circle cx="130" cy="296" r="5" fill="#c9a96e"/><text x="130" y="284" fill="#d8c294">1892</text><text x="130" y="318" fill="#a89e8a">APA charter member</text>
+  <circle cx="280" cy="296" r="5" fill="#c9a96e"/><text x="280" y="284" fill="#d8c294">1896</text><text x="280" y="318" fill="#a89e8a">World's 1st clinic +</text><text x="280" y="330" fill="#a89e8a">coins "clinical psychology"</text>
+  <circle cx="440" cy="296" r="5" fill="#c9a96e"/><text x="440" y="284" fill="#d8c294">1908</text><text x="440" y="318" fill="#a89e8a">Residential school</text>
+ </g>
+ <rect x="60" y="350" width="520" height="56" rx="10" fill="#13110c" stroke="#3a3327"/>
+ <text x="320" y="374" text-anchor="middle" font-size="12.5" fill="#d8c294" class="svg-h">A clinic run BY psychologists, not physicians</text>
+ <text x="320" y="394" text-anchor="middle" font-size="11" fill="#a89e8a">They contributed measurement (not yet treatment) — the start of scientific analysis of mental illness</text>
+ <rect x="60" y="416" width="520" height="42" rx="9" fill="#2a1815" stroke="#3a3327"/>
+ <text x="320" y="442" text-anchor="middle" font-size="11" fill="#cf9a90">Context: the 1815 Bethlem ("Bedlam") enquiry exposed appalling abuse despite the 1774 Madhouses Act.</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li><b>Lightner Witmer</b> (1867–1956) trained under Wundt, then founded the <b>world's first psychological clinic</b> in 1896 and coined 'clinical psychology'.</li><li>He shifted the cause of mental illness from <b>heredity to environment</b> — a poor environment harms, a better one heals.</li><li>This echoed earlier <b>moral treatment</b> (Tuke's York Retreat, Dorothea Dix) but placed it on a <b>scientific, measurement-based</b> footing.</li><li>His clinics were run <b>by psychologists, not physicians</b> — the start of psychology's role in mental illness.</li><li>Early psychologists offered <b>measurement, not yet treatment</b>; note Witmer was <b>not</b> influenced by Freud.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Witmer: blame the environment, not the genes — and measure it. The first clinic, run by psychologists.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="10">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 10 · Industrial psychology</div>
+        <h2>Scott — Advertising &amp; Personnel Testing</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 450" xmlns="http://www.w3.org/2000/svg">
+ <defs><marker id="a10" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c9a96e"/></marker></defs>
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Walter Dill Scott's two contributions</text>
+ <circle cx="320" cy="70" r="26" fill="#211e16" stroke="#c9a96e"/>
+ <text x="320" y="68" text-anchor="middle" font-size="11" fill="#d8c294">SCOTT</text>
+ <text x="320" y="82" text-anchor="middle" font-size="9" fill="#a89e8a">(PhD, Wundt)</text>
+ <line x1="300" y1="88" x2="180" y2="120" stroke="#c9a96e" stroke-width="2" marker-end="url(#a10)"/>
+ <line x1="340" y1="88" x2="460" y2="120" stroke="#c9a96e" stroke-width="2" marker-end="url(#a10)"/>
+ <!-- advertising -->
+ <rect x="34" y="124" width="262" height="280" rx="13" fill="#13110c" stroke="#c9a96e"/>
+ <text x="165" y="150" text-anchor="middle" class="svg-h" font-size="17" fill="#d8c294">① ADVERTISING</text>
+ <text x="165" y="170" text-anchor="middle" font-size="10.5" fill="#c97064">"consumers are not rational"</text>
+ <rect x="54" y="184" width="222" height="56" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="68" y="206" font-size="12" fill="#c9a96e">Direct suggestion</text>
+ <text x="68" y="226" font-size="10.5" fill="#a89e8a">"Use Pears Soap" — just tell them</text>
+ <rect x="54" y="248" width="222" height="56" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="68" y="270" font-size="12" fill="#c9a96e">Emotional appeals</text>
+ <text x="68" y="290" font-size="10.5" fill="#a89e8a">sympathy-based ads aimed at women</text>
+ <rect x="54" y="312" width="222" height="74" rx="9" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="68" y="334" font-size="12" fill="#c9a96e">Return coupons</text>
+ <text x="68" y="354" font-size="10.5" fill="#a89e8a">a small free sample requires</text>
+ <text x="68" y="370" font-size="10.5" fill="#a89e8a">positive action → future purchase</text>
+ <!-- personnel -->
+ <rect x="344" y="124" width="262" height="280" rx="13" fill="#13110c" stroke="#c9a96e"/>
+ <text x="475" y="150" text-anchor="middle" class="svg-h" font-size="17" fill="#d8c294">② PERSONNEL TESTING</text>
+ <text x="475" y="170" text-anchor="middle" font-size="10.5" fill="#a89e8a">distinguishing good from bad staff</text>
+ <rect x="364" y="186" width="222" height="40" rx="8" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="475" y="211" text-anchor="middle" font-size="11.5" fill="#ece6d8">Employers RATE their employees</text>
+ <line x1="475" y1="226" x2="475" y2="244" stroke="#c9a96e" stroke-width="2" marker-end="url(#a10)"/>
+ <rect x="364" y="246" width="222" height="40" rx="8" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="475" y="271" text-anchor="middle" font-size="11.5" fill="#ece6d8">Give group questionnaire tests</text>
+ <line x1="475" y1="286" x2="475" y2="304" stroke="#c9a96e" stroke-width="2" marker-end="url(#a10)"/>
+ <rect x="364" y="306" width="222" height="40" rx="8" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="475" y="331" text-anchor="middle" font-size="11.5" fill="#ece6d8">Keep items that separate them</text>
+ <line x1="475" y1="346" x2="475" y2="362" stroke="#7faf6a" stroke-width="2" marker-end="url(#a10)"/>
+ <rect x="364" y="364" width="222" height="24" rx="7" fill="#1d2718" stroke="#7faf6a"/>
+ <text x="475" y="381" text-anchor="middle" font-size="11" fill="#9ec08a">→ a selection test</text>
+ <text x="320" y="428" text-anchor="middle" font-size="11.5" fill="#a89e8a">Like James he theorised; like Witmer he built real ASSESSMENT methods.</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li><b>Walter Dill Scott</b> (1869–1955) earned a PhD with Wundt but <b>rejected</b> the pure-only rule, pioneering industrial psychology.</li><li>In <b>advertising</b>, he assumed consumers are not rational: direct suggestion ('Use Pears Soap'), emotional appeals, and <b>return coupons</b>.</li><li>Return coupons worked because a small action by the consumer <b>primes a future purchase</b>.</li><li>In <b>personnel testing</b>, he had employers rate staff, then kept the test items that <b>separated good from bad</b> workers.</li><li>Like James he theorised, but like Witmer he produced real, research-based <b>assessment methods</b>.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Scott&#x27;s two engines of industrial psychology: persuade the irrational consumer, and test the would-be employee.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="11">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 11 · Psychological testing</div>
+        <h2>Binet, Spearman &amp; the g Factor</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg">
+ <defs><marker id="a11" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c9a96e"/></marker></defs>
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">One intelligence — or many?</text>
+ <!-- Binet: many faculties -->
+ <rect x="34" y="50" width="262" height="190" rx="13" fill="#13110c" stroke="#c9a96e"/>
+ <text x="165" y="76" text-anchor="middle" class="svg-h" font-size="17" fill="#d8c294">BINET (1905)</text>
+ <text x="165" y="95" text-anchor="middle" font-size="10.5" fill="#a89e8a">~30 tests of MANY faculties</text>
+ <g fill="#211e16" stroke="#3a3327">
+  <circle cx="90" cy="135" r="20"/><circle cx="150" cy="125" r="20"/><circle cx="210" cy="135" r="20"/><circle cx="120" cy="180" r="20"/><circle cx="190" cy="180" r="20"/>
+ </g>
+ <g font-size="9" fill="#a89e8a" text-anchor="middle">
+  <text x="90" y="138">memory</text><text x="150" y="128">reason</text><text x="210" y="138">attn.</text><text x="120" y="183">verbal</text><text x="190" y="183">judge</text>
+ </g>
+ <text x="165" y="222" text-anchor="middle" font-size="10.5" fill="#c9a96e">high on one, low on another —</text>
+ <text x="165" y="236" text-anchor="middle" font-size="10.5" fill="#c9a96e">NOT a single number</text>
+ <line x1="296" y1="145" x2="344" y2="145" stroke="#c9a96e" stroke-width="2" marker-end="url(#a11)"/>
+ <text x="320" y="136" text-anchor="middle" font-size="9" fill="#d8c294">~20 yrs</text><text x="320" y="160" text-anchor="middle" font-size="9" fill="#d8c294">later</text>
+ <!-- Spearman: one g -->
+ <rect x="344" y="50" width="262" height="190" rx="13" fill="#13110c" stroke="#c9a96e"/>
+ <text x="475" y="76" text-anchor="middle" class="svg-h" font-size="17" fill="#d8c294">SPEARMAN (1927)</text>
+ <text x="475" y="95" text-anchor="middle" font-size="10.5" fill="#a89e8a">scores correlate → factor analysis</text>
+ <circle cx="475" cy="155" r="34" fill="#211e16" stroke="#c9a96e" stroke-width="2"/>
+ <text x="475" y="150" text-anchor="middle" class="svg-h" font-size="24" fill="#d8c294">g</text>
+ <text x="475" y="170" text-anchor="middle" font-size="9" fill="#a89e8a">general</text>
+ <g stroke="#8a7448" stroke-width="1.2">
+  <line x1="448" y1="138" x2="410" y2="120"/><line x1="450" y1="172" x2="412" y2="195"/><line x1="502" y1="138" x2="540" y2="120"/><line x1="500" y1="172" x2="538" y2="195"/>
+ </g>
+ <text x="475" y="226" text-anchor="middle" font-size="10.5" fill="#c9a96e">one underlying factor in everything</text>
+ <!-- consequence: schooling -->
+ <text x="320" y="276" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">How each idea was USED</text>
+ <rect x="40" y="288" width="262" height="78" rx="10" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="171" y="312" text-anchor="middle" font-size="11.5" fill="#c9a96e">Binet's specific faculties</text>
+ <text x="171" y="332" text-anchor="middle" font-size="10.5" fill="#a89e8a">guide pupils to different CLASSES</text>
+ <text x="171" y="350" text-anchor="middle" font-size="10.5" fill="#a89e8a">within a school</text>
+ <rect x="338" y="288" width="262" height="78" rx="10" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="469" y="312" text-anchor="middle" font-size="11.5" fill="#c9a96e">Spearman's single g</text>
+ <text x="469" y="332" text-anchor="middle" font-size="10.5" fill="#a89e8a">sort children into different SCHOOLS</text>
+ <text x="469" y="350" text-anchor="middle" font-size="10.5" fill="#a89e8a">(UK 11-plus selection)</text>
+ <rect x="80" y="380" width="480" height="74" rx="10" fill="#2a1815" stroke="#c97064"/>
+ <text x="320" y="404" text-anchor="middle" font-size="12.5" fill="#e7c4bd" class="svg-h">UK tripartite system (Education Act 1944)</text>
+ <text x="320" y="424" text-anchor="middle" font-size="10.5" fill="#cf9a90">grammar · technical · secondary modern — sorted by IQ at age 11</text>
+ <text x="320" y="442" text-anchor="middle" font-size="10.5" fill="#c97064">Condemned as discriminatory; comprehensives introduced 1965</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li><b>Alfred Binet</b> (with Simon, 1905) built ~30 tests for the French commission on schooling — measuring <b>many separate faculties</b>, not one number.</li><li>Binet believed you could be high on one faculty and low on another; his tests couldn't capture 'the totality of an intelligence'.</li><li>About 20 years later <b>Spearman</b> used <b>factor analysis</b> on correlated scores to infer a single <b>general intelligence (g)</b>.</li><li>Binet's faculties guided pupils to <b>classes within</b> a school; Spearman's g was used to sort children into <b>different schools</b>.</li><li>The UK <b>tripartite system</b> (1944, 11-plus) followed g — later condemned as discriminatory; comprehensives arrived in 1965.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Binet = many faculties (sort within a school). Spearman = one &#x27;g&#x27; (sort between schools). Same tests, opposite uses.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="12">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 12 · Politics of research</div>
+        <h2>Applied vs Pure — and How the UK Government Won</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg">
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">The long campaign to value impact</text>
+ <!-- Laputa satire -->
+ <rect x="34" y="48" width="220" height="120" rx="12" fill="#13110c" stroke="#3a3327"/>
+ <text x="144" y="72" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">Swift's satire (1726)</text>
+ <text x="144" y="92" text-anchor="middle" font-size="10.5" fill="#a89e8a">Flying island of "Laputa"</text>
+ <text x="144" y="110" text-anchor="middle" font-size="10.5" fill="#a89e8a">mocks useless "pure" pursuits:</text>
+ <text x="144" y="128" text-anchor="middle" font-size="10.5" fill="#c9a96e">sunbeams from cucumbers</text>
+ <text x="144" y="146" text-anchor="middle" font-size="10.5" fill="#c9a96e">soft-marble pillows</text>
+ <text x="144" y="162" text-anchor="middle" font-size="9" fill="#8a7448">"la puta" = whore (Spanish)</text>
+ <rect x="280" y="48" width="326" height="120" rx="12" fill="#211e16" stroke="#c9a96e"/>
+ <text x="443" y="72" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">The polytechnic story</text>
+ <text x="300" y="96" font-size="11" fill="#ece6d8">1964 · Wilson builds polytechnics for applied study</text>
+ <text x="300" y="116" font-size="11" fill="#ece6d8">(CNAA lets them award degrees) — but lower status</text>
+ <text x="300" y="138" font-size="11" fill="#c9a96e">1992 · "polys" become universities...</text>
+ <text x="300" y="158" font-size="11" fill="#c97064">...and abandon their applied aim. Universities won.</text>
+ <!-- funding timeline -->
+ <text x="320" y="206" text-anchor="middle" class="svg-h" font-size="16" fill="#d8c294">How the government got applied research valued</text>
+ <line x1="80" y1="262" x2="560" y2="262" stroke="#c9a96e" stroke-width="2.5"/>
+ <g text-anchor="middle">
+  <circle cx="140" cy="262" r="7" fill="#c9a96e"/><text x="140" y="246" font-size="11" fill="#d8c294">1986</text>
+  <rect x="70" y="276" width="140" height="56" rx="8" fill="#1c1a14" stroke="#3a3327"/>
+  <text x="140" y="297" font-size="11" fill="#c9a96e">RAE</text><text x="140" y="314" font-size="9.5" fill="#a89e8a">compete on research</text><text x="140" y="327" font-size="9.5" fill="#a89e8a">quality (journals)</text>
+  <circle cx="350" cy="262" r="7" fill="#c9a96e"/><text x="350" y="246" font-size="11" fill="#d8c294">2014</text>
+  <rect x="280" y="276" width="140" height="56" rx="8" fill="#211e16" stroke="#c9a96e"/>
+  <text x="350" y="297" font-size="11" fill="#c9a96e">REF</text><text x="350" y="314" font-size="9.5" fill="#a89e8a">+ must show IMPACT:</text><text x="350" y="327" font-size="9.5" fill="#a89e8a">benefit to society</text>
+  <circle cx="540" cy="262" r="7" fill="#c9a96e"/><text x="540" y="246" font-size="11" fill="#d8c294">2022</text>
+  <rect x="470" y="276" width="140" height="56" rx="8" fill="#1d2718" stroke="#7faf6a"/>
+  <text x="540" y="297" font-size="11" fill="#9ec08a">REF 2022</text><text x="540" y="314" font-size="9.5" fill="#a89e8a">impact weighted</text><text x="540" y="327" font-size="9.5" fill="#a89e8a">even MORE heavily</text>
+ </g>
+ <rect x="90" y="356" width="460" height="48" rx="10" fill="#13110c" stroke="#3a3327"/>
+ <text x="320" y="380" text-anchor="middle" font-size="12" fill="#d8c294">Universities already competed for funding — now they compete on IMPACT.</text>
+ <text x="320" y="398" text-anchor="middle" font-size="10.5" fill="#a89e8a">A later twist (TEF) added a competition for teaching quality too.</text>
+ <text x="320" y="436" text-anchor="middle" font-size="12.5" fill="#c9a96e">Result: applied research suddenly has a status it never had in the UK before.</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>Pure research long outranked applied in Europe — satirised by <b>Swift's Laputa</b> (extracting sunbeams from cucumbers).</li><li>UK <b>polytechnics</b> (1964) taught applied subjects at lower status; in <b>1992</b> they became universities — and dropped their applied mission.</li><li>The government valued applied work through funding competitions: the <b>RAE</b> (from 1986) rewarded research quality via journal articles.</li><li>The <b>REF</b> (2014) added a requirement to show <b>impact</b> — beneficial effect on society — weighted even more heavily by 2022.</li><li>Because universities chase funding, applied research gained a <b>status it never previously had</b> in the UK.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>RAE rewarded papers; REF rewarded impact. Tie money to usefulness and even snobs will value applied work.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="13">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 13 · What impact means</div>
+        <h2>Research Impact &amp; the Three Intentions</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 470" xmlns="http://www.w3.org/2000/svg">
+ <defs><marker id="a13" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#c9a96e"/></marker></defs>
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">What counts as impact?</text>
+ <!-- impact formula -->
+ <rect x="60" y="48" width="160" height="56" rx="10" fill="#211e16" stroke="#c9a96e"/>
+ <text x="140" y="72" text-anchor="middle" font-size="13" fill="#d8c294">REACH</text><text x="140" y="92" text-anchor="middle" font-size="10" fill="#a89e8a">how many affected</text>
+ <text x="246" y="84" text-anchor="middle" class="svg-h" font-size="22" fill="#c9a96e">×</text>
+ <rect x="272" y="48" width="160" height="56" rx="10" fill="#211e16" stroke="#c9a96e"/>
+ <text x="352" y="72" text-anchor="middle" font-size="13" fill="#d8c294">SIGNIFICANCE</text><text x="352" y="92" text-anchor="middle" font-size="10" fill="#a89e8a">how much change</text>
+ <text x="458" y="84" text-anchor="middle" class="svg-h" font-size="20" fill="#c9a96e">→</text>
+ <rect x="480" y="48" width="120" height="56" rx="10" fill="#1d2718" stroke="#7faf6a"/>
+ <text x="540" y="72" text-anchor="middle" font-size="13" fill="#9ec08a">IMPACT</text><text x="540" y="92" text-anchor="middle" font-size="9.5" fill="#a89e8a">must rest on RESEARCH</text>
+ <!-- data-led vs theory-led continuum -->
+ <text x="320" y="138" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">A continuum, not a binary</text>
+ <line x1="90" y1="170" x2="550" y2="170" stroke="#c9a96e" stroke-width="2"/>
+ <circle cx="90" cy="170" r="6" fill="#c9a96e"/><circle cx="550" cy="170" r="6" fill="#c9a96e"/>
+ <text x="90" y="156" text-anchor="middle" font-size="11.5" fill="#d8c294">DATA-LED</text>
+ <text x="90" y="190" text-anchor="middle" font-size="9.5" fill="#a89e8a">impact from an applied field</text>
+ <text x="90" y="202" text-anchor="middle" font-size="9.5" fill="#a89e8a">(study the target group)</text>
+ <text x="550" y="156" text-anchor="middle" font-size="11.5" fill="#d8c294">THEORY-LED</text>
+ <text x="550" y="190" text-anchor="middle" font-size="9.5" fill="#a89e8a">impact from many sources;</text>
+ <text x="550" y="202" text-anchor="middle" font-size="9.5" fill="#a89e8a">may apply far in future</text>
+ <!-- three intentions pipeline -->
+ <text x="320" y="240" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">Three research INTENTIONS</text>
+ <rect x="40" y="256" width="170" height="70" rx="10" fill="#13110c" stroke="#3a3327"/>
+ <text x="125" y="280" text-anchor="middle" font-size="12.5" fill="#c9a96e">PURE / basic</text>
+ <text x="125" y="300" text-anchor="middle" font-size="10" fill="#a89e8a">aim = intrinsic</text>
+ <text x="125" y="314" text-anchor="middle" font-size="10" fill="#a89e8a">knowledge for its own sake</text>
+ <line x1="210" y1="291" x2="246" y2="291" stroke="#c9a96e" stroke-width="2" marker-end="url(#a13)"/>
+ <rect x="248" y="256" width="170" height="70" rx="10" fill="#211e16" stroke="#c9a96e"/>
+ <text x="333" y="280" text-anchor="middle" font-size="12.5" fill="#d8c294">TRANSLATIONAL</text>
+ <text x="333" y="300" text-anchor="middle" font-size="10" fill="#a89e8a">the bridge — turns theory</text>
+ <text x="333" y="314" text-anchor="middle" font-size="10" fill="#a89e8a">into real-world benefit</text>
+ <line x1="418" y1="291" x2="454" y2="291" stroke="#c9a96e" stroke-width="2" marker-end="url(#a13)"/>
+ <rect x="456" y="256" width="148" height="70" rx="10" fill="#13110c" stroke="#3a3327"/>
+ <text x="530" y="280" text-anchor="middle" font-size="12.5" fill="#c9a96e">APPLIED</text>
+ <text x="530" y="300" text-anchor="middle" font-size="10" fill="#a89e8a">aim = solve a</text>
+ <text x="530" y="314" text-anchor="middle" font-size="10" fill="#a89e8a">practical problem</text>
+ <!-- example + lewin -->
+ <rect x="40" y="346" width="280" height="60" rx="10" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="180" y="368" text-anchor="middle" font-size="11.5" fill="#d8c294">Quantum theory → mobile phones</text>
+ <text x="180" y="388" text-anchor="middle" font-size="10" fill="#a89e8a">but translational research was still needed</text>
+ <rect x="340" y="346" width="264" height="60" rx="10" fill="#211e16" stroke="#c9a96e"/>
+ <text x="472" y="368" text-anchor="middle" font-size="11.5" fill="#d8c294" class="svg-h">Lewin: "nothing so practical</text>
+ <text x="472" y="386" text-anchor="middle" font-size="11.5" fill="#d8c294" class="svg-h">as a good theory"</text>
+ <text x="320" y="438" text-anchor="middle" font-size="11" fill="#a89e8a">Undergraduate-only findings also need translation before they generalise to other populations.</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>Impact (per the REF) = <b>reach × significance</b> — and it must be <b>based on research</b>, not just influence.</li><li>Research sits on a <b>data-led ↔ theory-led</b> continuum: data-led impact comes from applied fields; theory-led impact can come from anywhere.</li><li>Three intentions: <b>pure</b> (intrinsic knowledge), <b>applied</b> (solve a problem), and <b>translational</b> (the bridge turning theory into benefit).</li><li>Example: <b>quantum theory → mobile phones</b>, but only via translational research — lab findings must be confirmed in real life.</li><li>Lewin's dictum frames it: <b>'there is nothing so practical as a good theory'</b> (and theory-led programmes tend to progress, per Lakatos).</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Impact = reach × significance, on a research base. Pure → translational → applied is the bridge between them.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="14">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 14 · Prejudice in action</div>
+        <h2>Discrimination Against Women in Psychology</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">Two organisations, two attitudes</text>
+ <rect x="34" y="48" width="270" height="150" rx="13" fill="#2a1815" stroke="#c97064"/>
+ <text x="169" y="74" text-anchor="middle" class="svg-h" font-size="16" fill="#e7c4bd">Experimentalists</text>
+ <text x="169" y="92" text-anchor="middle" font-size="10" fill="#cf9a90">(Titchener, 1904 · STRUCTURALIST · pure)</text>
+ <text x="50" y="116" font-size="11" fill="#e7c4bd">• science = a "masculine club"</text>
+ <text x="50" y="136" font-size="11" fill="#e7c4bd">• the "woman problem" = women</text>
+ <text x="58" y="152" font-size="11" fill="#cf9a90">  wanting to be psychologists</text>
+ <text x="50" y="174" font-size="11" fill="#e7c4bd">• women barred until 1928</text>
+ <text x="50" y="190" font-size="11" fill="#cf9a90">  (E. Gibson only in 1949)</text>
+ <rect x="336" y="48" width="270" height="150" rx="13" fill="#1d2718" stroke="#7faf6a"/>
+ <text x="471" y="74" text-anchor="middle" class="svg-h" font-size="16" fill="#cfe4c2">APA</text>
+ <text x="471" y="92" text-anchor="middle" font-size="10" fill="#9ec08a">(FUNCTIONALIST · applied focus)</text>
+ <text x="352" y="116" font-size="11" fill="#cfe4c2">• less discriminatory</text>
+ <text x="352" y="138" font-size="11" fill="#cfe4c2">• Mary Calkins — 1st female</text>
+ <text x="360" y="154" font-size="11" fill="#9ec08a">  president, 1905</text>
+ <text x="352" y="176" font-size="11" fill="#cfe4c2">• (Harvard refused her a degree</text>
+ <text x="360" y="192" font-size="11" fill="#9ec08a">  despite top performance)</text>
+ <!-- Boring root cause -->
+ <rect x="120" y="214" width="400" height="56" rx="10" fill="#13110c" stroke="#c9a96e"/>
+ <text x="320" y="238" text-anchor="middle" font-size="12" fill="#d8c294">Boring linked the bias against women AND Jews to "pure" science</text>
+ <text x="320" y="258" text-anchor="middle" font-size="10.5" fill="#a89e8a">Root cause = intellectual snobbery, NOT anything about ability. Gender is irrelevant to pure vs applied.</text>
+ <!-- evidence bars -->
+ <text x="320" y="300" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">What the evidence actually shows (with large overlap)</text>
+ <g font-size="10">
+  <text x="60" y="332" fill="#a89e8a">Maths</text>
+  <rect x="120" y="322" width="150" height="14" rx="3" fill="#1c1a14"/><rect x="120" y="322" width="92" height="14" rx="3" fill="#c9a96e"/>
+  <text x="280" y="333" fill="#c9a96e">Girls ahead (all ages but kindergarten)</text>
+  <text x="60" y="356" fill="#a89e8a">Spatial</text>
+  <rect x="120" y="346" width="150" height="14" rx="3" fill="#1c1a14"/><rect x="120" y="346" width="88" height="14" rx="3" fill="#8a7448"/>
+  <text x="280" y="357" fill="#c9a96e">Boys ahead (all ages)</text>
+  <text x="60" y="380" fill="#a89e8a">Literacy</text>
+  <rect x="120" y="370" width="150" height="14" rx="3" fill="#1c1a14"/><rect x="120" y="370" width="100" height="14" rx="3" fill="#c9a96e"/>
+  <text x="280" y="381" fill="#c9a96e">Girls ahead (all ages)</text>
+  <text x="60" y="404" fill="#a89e8a">Overall</text>
+  <rect x="120" y="394" width="150" height="14" rx="3" fill="#1c1a14"/><rect x="120" y="394" width="82" height="14" rx="3" fill="#c9a96e"/>
+  <text x="280" y="405" fill="#c9a96e">Girls: small advantage</text>
+ </g>
+ <rect x="80" y="424" width="480" height="46" rx="10" fill="#211e16" stroke="#c9a96e"/>
+ <text x="320" y="445" text-anchor="middle" font-size="11.5" fill="#d8c294">Huge SDs &amp; a big socioeconomic effect → sex is no basis for selection.</text>
+ <text x="320" y="463" text-anchor="middle" font-size="11" fill="#c9a96e">"Kindness is the antidote to prejudice."</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>Two US bodies diverged: the pure-science <b>Experimentalists</b> (structuralist) treated science as a masculine club; the applied <b>APA</b> was less discriminatory.</li><li>The 'woman problem' simply meant women <b>wanting to be psychologists</b>; experimentalists barred them until 1928 (Eleanor Gibson only in 1949).</li><li>The APA made <b>Mary Calkins</b> its first female president (1905) — though Harvard refused her a degree despite her being its strongest student.</li><li><b>Edwin Boring</b> tied prejudice against women and Jews to 'pure' science — the real driver was <b>intellectual snobbery</b>, not ability.</li><li>Evidence: girls lead in maths and literacy, boys in spatial skills — but with huge overlap and big SES effects, so <b>sex is no basis for selection</b>.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>The &#x27;woman problem&#x27; was just women wanting in. The barrier was snobbery dressed as &#x27;pure science&#x27;, not evidence.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+  <div class="lesson" data-lesson="15">
+    <div class="lesson-top">
+      <div>
+        <div class="l-eyebrow">Lesson 15 · Snobbery today</div>
+        <h2>Academic Snobbery &amp; University League Tables</h2>
+      </div>
+    </div>
+    <div class="lesson-layout">
+      <div class="diagram-wrap"><span class="dlabel">whiteboard</span><svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg">
+ <text x="320" y="28" text-anchor="middle" class="svg-h" font-size="22" fill="#d8c294">The snobbery that survives: the rankings</text>
+ <!-- ranking pyramid -->
+ <polygon points="160,56 110,104 210,104" fill="#211e16" stroke="#c9a96e"/>
+ <text x="160" y="88" text-anchor="middle" font-size="10" fill="#d8c294">Russell /</text><text x="160" y="100" text-anchor="middle" font-size="10" fill="#d8c294">Ivy League</text>
+ <polygon points="110,108 210,108 245,160 75,160" fill="#1c1a14" stroke="#3a3327"/>
+ <text x="160" y="138" text-anchor="middle" font-size="10" fill="#a89e8a">older / higher-entry</text>
+ <polygon points="75,164 245,164 280,216 40,216" fill="#13110c" stroke="#3a3327"/>
+ <text x="160" y="194" text-anchor="middle" font-size="10" fill="#a89e8a">newer universities</text>
+ <text x="160" y="240" text-anchor="middle" font-size="10.5" fill="#c9a96e">Rankings rest mostly on RESEARCH output</text>
+ <text x="160" y="256" text-anchor="middle" font-size="10" fill="#a89e8a">— the public rarely knows what "good" means</text>
+ <!-- teaching-research nexus tested -->
+ <rect x="320" y="56" width="290" height="200" rx="13" fill="#13110c" stroke="#3a3327"/>
+ <text x="465" y="80" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">The teaching–research nexus</text>
+ <text x="340" y="104" font-size="11" fill="#a89e8a">Claim: great researchers → better teaching</text>
+ <line x1="360" y1="116" x2="360" y2="138" stroke="#c97064" stroke-width="2"/>
+ <text x="380" y="132" font-size="11" fill="#c97064">Evidence says: NO link</text>
+ <rect x="340" y="146" width="250" height="34" rx="8" fill="#2a1815" stroke="#c97064"/>
+ <text x="465" y="167" text-anchor="middle" font-size="10.5" fill="#e7c4bd">little relationship found (McKenzie; Teichler)</text>
+ <rect x="340" y="186" width="250" height="34" rx="8" fill="#2a1815" stroke="#c97064"/>
+ <text x="465" y="207" text-anchor="middle" font-size="10.5" fill="#e7c4bd">sometimes worse ratings / outcomes</text>
+ <text x="465" y="242" text-anchor="middle" font-size="11" fill="#c9a96e">High ranking ≠ better education for YOU</text>
+ <!-- takeaway -->
+ <rect x="60" y="280" width="520" height="58" rx="11" fill="#211e16" stroke="#c9a96e"/>
+ <text x="320" y="304" text-anchor="middle" class="svg-h" font-size="15" fill="#d8c294">It is you — not the league table — that decides what you learn.</text>
+ <text x="320" y="326" text-anchor="middle" font-size="11" fill="#a89e8a">Your experience depends on the opportunities you make and even who you live with.</text>
+ <rect x="60" y="350" width="520" height="92" rx="11" fill="#13110c" stroke="#3a3327"/>
+ <text x="320" y="374" text-anchor="middle" font-size="12.5" fill="#c9a96e" class="svg-h">A word on wellbeing</text>
+ <text x="320" y="396" text-anchor="middle" font-size="11" fill="#a89e8a">Students can be happy or unhappy at ANY university. Even William James despaired —</text>
+ <text x="320" y="414" text-anchor="middle" font-size="11" fill="#a89e8a">history proved his self-doubt wrong. If things feel dark, give it time and talk to someone.</text>
+ <text x="320" y="434" text-anchor="middle" font-size="11" fill="#d8c294">Student suicide rates are lower than for peers outside higher education — but every loss matters.</text>
+ </svg></div>
+      <div class="side">
+        <div class="points"><h4>Key points</h4><ul><li>The pure-over-applied snobbery has faded, but a descendant survives: <b>university league tables</b>.</li><li>Rankings rest mostly on <b>research output</b>, and the public rarely knows what 'good' actually measures.</li><li>The <b>teaching–research nexus</b> (great researchers make great teachers) is <b>not supported</b> by evidence — sometimes the link is even negative.</li><li>So a high-ranking university does <b>not</b> guarantee a better education: <b>your</b> effort and opportunities matter more.</li><li>Wellbeing note: students can struggle anywhere — even James despaired. Give it time, and <b>talk to someone</b>.</li></ul></div>
+        <div class="hook"><div class="htag">Memory hook</div><p>Rankings measure research, not your education. It is you, not the league table, that decides what you learn.</p></div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="prev-l">‹ Previous</button>
+      <button class="next-l">Next ›</button>
+    </div>
+  </div>
+</section>
+<section class="view" id="view-flashcards">
+  <div class="page-head">
+    <div class="eyebrow">34 cards · tap to flip</div>
+    <h2>Flashcards</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="fc-controls">
+    <button class="chip active" data-topic="all">All</button><button class="chip" data-topic="Core">Core</button><button class="chip" data-topic="Terminology">Terminology</button><button class="chip" data-topic="History">History</button><button class="chip" data-topic="America">America</button><button class="chip" data-topic="Paradigms">Paradigms</button><button class="chip" data-topic="Education">Education</button><button class="chip" data-topic="Impact">Impact</button><button class="chip" data-topic="Hall">Hall</button><button class="chip" data-topic="Forensic">Forensic</button><button class="chip" data-topic="Clinical">Clinical</button><button class="chip" data-topic="Industrial">Industrial</button><button class="chip" data-topic="Testing">Testing</button><button class="chip" data-topic="Politics">Politics</button>
+    <span class="fc-btn">
+      <button class="chip" id="fc-shuffle">⤮ Shuffle</button>
+      <button class="chip" id="fc-reset">↺ Reset</button>
+    </span>
+  </div>
+  <div class="fc-count" id="fc-count"></div>
+  <div class="fc-grid" id="fc-grid" style="margin-top:14px"></div>
+</section>
+<section class="view" id="view-mcq">
+  <div class="page-head">
+    <div class="eyebrow">16 questions · exam practice</div>
+    <h2>Multiple choice</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="mcq-meta">
+    <div class="score-pill">Score <b id="mcq-score">0</b> / <span id="mcq-total">16</span> &nbsp;·&nbsp; answered <span id="mcq-ans">0</span></div>
+    <button class="chip mcq-reset" id="mcq-reset">↺ Reset quiz</button>
+  </div>
+  <div id="mcq-list"></div>
+</section>
+<script>
+const FC = [{"topic": "Core", "q": "What does it mean to be prejudiced?", "a": "To <b>prejudge</b> \u2014 base a judgement on prior beliefs rather than the thing itself. Labelling alone triggers it (Billig & Tajfel, 1973), so everyone prejudges."}, {"topic": "Core", "q": "What is the first step to reducing prejudice?", "a": "<b>Awareness</b> of it. Behaviour depends on how we respond to our prejudgements."}, {"topic": "Core", "q": "What is intellectual snobbery?", "a": "A rarely-named prejudice: valuing 'pure' science over applied, and historically deeming women unsuited to psychology. Survives today in <b>university league tables</b>."}, {"topic": "Terminology", "q": "Why does the word 'pure' science carry prejudice?", "a": "'Pure' connotes <b>noble and good</b>, implying its opposite (applied) is dirty and bad. The label smuggles in a value judgement."}, {"topic": "Terminology", "q": "Compare 'basic' and 'fundamental' science.", "a": "<b>Basic</b> = done first (before applied). <b>Fundamental</b> = deals with more general/important issues. Both subtly rank pure above applied."}, {"topic": "History", "q": "Why did Wundt insist psychology be a 'pure' science?", "a": "So it would fit <b>high-status university life</b> rather than low-status technical-college life \u2014 applied was seen as inferior in Europe."}, {"topic": "History", "q": "How did European class structure shape attitudes to research?", "a": "The leisured <b>gentry/aristocracy</b> did 'pure' (non-applied) activities; workers did 'applied'. So applied was judged inferior \u2014 pure snobbery."}, {"topic": "History", "q": "What parallel does Hyland draw with the Indian caste system?", "a": "Brahmins (priests/teachers/judges) sit on top, supported by lower castes; Dalits do menial work and still suffer prejudice. Same logic as European class snobbery."}, {"topic": "History", "q": "Give an example of applied results from Wundt's 'pure' research.", "a": "<b>Reaction-time</b> ('mental chronometry') research explained why astronomers timed star transits differently \u2014 people have different reaction times (Williams, 1912)."}, {"topic": "America", "q": "Why did applied psychology begin in the USA?", "a": "American wealth/status came from <b>practical success</b>, not heredity, so 'applied' was respected. Science was valued because it solved problems."}, {"topic": "America", "q": "Contrast Wundt and William James as 'fathers'.", "a": "<b>Wundt</b> = father of psychology as an institution (Europe). <b>James</b> = father of American (applied) psychology."}, {"topic": "America", "q": "What is the 'timing paradox' of Harvard vs Leipzig?", "a": "Harvard taught the first course titled 'Psychology' in <b>1872</b>, five years before Wundt taught at Leipzig (1879) \u2014 but it was not yet scientific psychology."}, {"topic": "Paradigms", "q": "Define structuralism vs functionalism.", "a": "<b>Structuralism</b> (Wundt, Titchener): study the mind's structure for its own sake. <b>Functionalism</b> (James, Dewey, Angell): the mind has a function \u2014 it controls behaviour."}, {"topic": "Paradigms", "q": "What is the 'brick wall' vs 'coalescence' hypothesis?", "a": "Wundt's <b>brick wall</b>: consciousness is built of components. James's <b>coalescence</b>: consciousness flows as a stream."}, {"topic": "Paradigms", "q": "Which two thinkers shaped James's functionalism?", "a": "<b>Darwin</b> (structures fit their use) and <b>Peirce</b> (pragmatism \u2014 behaviour must be adaptive). James concluded the mind has a use."}, {"topic": "Education", "q": "Distinguish native reactions from habits (James).", "a": "<b>Native reactions</b> = instinctive responses (curiosity, fear, imitation, ambition). <b>Habits</b> = acquired responses that run without conscious intention. Teaching builds habits from native reactions."}, {"topic": "Education", "q": "What was James's view on cramming?", "a": "He opposed it. New ideas stick when linked to <b>many</b> old ones, so learning should be gradual with numerous connections \u2014 a seed of problem-based learning."}, {"topic": "Education", "q": "What did James draw from Ebbinghaus?", "a": "Forgetting is <b>fast at first then slows</b>; recognition can survive when recall fails \u2014 so exams may be a poor form of assessment."}, {"topic": "Education", "q": "What is the key weakness of James's teaching advice?", "a": "He <b>never tested</b> it on children. It is sound theoretical speculation by deduction \u2014 not scientific evidence."}, {"topic": "Impact", "q": "Why do James and Hall not count as creating 'impact'?", "a": "Their recommendations came from <b>observation-led theory</b>, not tested research. Modern impact must be based on research."}, {"topic": "Hall", "q": "What did Stanley Hall found, and when?", "a": "First US psychology lab (1883), the <b>American Journal of Psychology</b> (1887) and the <b>APA</b> (1892) \u2014 reputedly while James was out of town."}, {"topic": "Forensic", "q": "How did M\u00fcnsterberg define applied psychology?", "a": "By the researcher's <b>intention</b> to solve a practical problem. Applied is to experimental psychology as <b>engineering is to physics</b>."}, {"topic": "Forensic", "q": "Why is M\u00fcnsterberg the 'father of applied psychology'?", "a": "He explicitly distinguished and promoted applied research, and based his forensic recommendations on <b>experiments</b>, not just theory."}, {"topic": "Forensic", "q": "List M\u00fcnsterberg's three enduring forensic principles.", "a": "1) Get eyewitness testimony ASAP; 2) avoid leading questions (they create false memories); 3) witnesses can sincerely believe a false memory."}, {"topic": "Forensic", "q": "What did M\u00fcnsterberg's lie-detection work find?", "a": "Emotionally charged 'dangerous' words produce <b>much longer association times</b>; safe words give stable associations, dangerous ones change."}, {"topic": "Clinical", "q": "What did Witmer establish, and what did he coin?", "a": "The <b>world's first psychological clinic</b> (1896) and the term <b>clinical psychology</b> \u2014 staffed by psychologists, not physicians."}, {"topic": "Clinical", "q": "How did Witmer shift the cause of mental illness?", "a": "From <b>heredity</b> to <b>environment</b>: a poor environment causes illness, a better one aids recovery \u2014 a scientific version of moral treatment."}, {"topic": "Clinical", "q": "Who pioneered 'moral treatment'?", "a": "<b>William Tuke</b> (Quaker, York Retreat) and, in the USA, <b>Dorothea Dix</b>, who campaigned for better care of the mentally ill."}, {"topic": "Industrial", "q": "What were Scott's two contributions to industrial psychology?", "a": "<b>Advertising</b> (suggestion, emotional appeals, return coupons) and <b>personnel testing</b> (employer ratings \u2192 selection-test items)."}, {"topic": "Industrial", "q": "Why did Scott use 'return coupons'?", "a": "A small action by the consumer (returning a coupon for a free sample) <b>primes a future purchase</b>. He assumed consumers are not rational."}, {"topic": "Testing", "q": "How did Binet's view of intelligence differ from Spearman's?", "a": "Binet measured <b>many separate faculties</b> (no single number). Spearman used factor analysis on correlated scores to infer a single <b>general intelligence (g)</b>."}, {"topic": "Testing", "q": "How were Binet's and Spearman's ideas applied differently?", "a": "Binet's faculties guided pupils to <b>classes within</b> a school; Spearman's g was used to sort children into <b>different schools</b> (UK 11-plus)."}, {"topic": "Politics", "q": "What is the difference between the RAE and the REF?", "a": "Both are UK funding competitions. The <b>RAE</b> (1986) rewarded research quality (journal articles); the <b>REF</b> (2014) added a requirement to show <b>impact</b> on society."}, {"topic": "Politics", "q": "Name the three research intentions.", "a": "<b>Pure</b> (intrinsic knowledge), <b>applied</b> (solve a practical problem), and <b>translational</b> (bridges theory into real-world benefit)."}];
+const MCQ = [{"q": "According to Hyland, what triggers prejudgement?", "opts": ["Only negative past experiences", "Merely labelling something, whatever the label", "A formal education in stereotypes", "Conscious, deliberate hostility"], "correct": 1, "exp": "Billig & Tajfel (1973) showed that simply labelling something leads to prejudgement, regardless of the label \u2014 so everyone prejudges; the difference is in how we respond."}, {"q": "Why did Wundt brand his new psychology a 'pure' rather than applied science?", "opts": ["To make it easier to fund", "So it would fit high-status university life, not low-status technical colleges", "Because he disliked solving practical problems", "To distance it from philosophy"], "correct": 1, "exp": "In the European status order, applied work was seen as inferior. Calling psychology 'pure' secured it a place in prestigious university life."}, {"q": "Applied psychology developed first in America largely because:", "opts": ["American universities were wealthier", "American status came from practical success, so applied work was respected", "Europe banned applied research", "Wundt emigrated to the USA"], "correct": 1, "exp": "Unlike Europe's hereditary status, American social class rested on practical (applied) success \u2014 so 'applied' carried no stigma."}, {"q": "Which pair best matches structuralism and functionalism?", "opts": ["James / Wundt", "Structure for its own sake / mind has a function", "Coalescence / brick wall", "Applied / pure"], "correct": 1, "exp": "Structuralism (Wundt, Titchener) studied the mind's structure for its own sake; functionalism (James) held that the mind has a function \u2014 controlling behaviour."}, {"q": "James's 'coalescence hypothesis' claimed that consciousness:", "opts": ["Is built of separable components", "Flows as a continuous stream", "Cannot be studied by introspection", "Is identical to behaviour"], "correct": 1, "exp": "James argued consciousness flows as a stream (coalescence), against Wundt's 'brick wall' view that it is built of components."}, {"q": "In James's educational psychology, habits are best described as:", "opts": ["Instinctive responses present from birth", "Acquired responses that occur without conscious intention", "Punishments used to control children", "The same as native reactions"], "correct": 1, "exp": "Habits are acquired responses that, once formed, run automatically. Teaching works by building habits out of native reactions."}, {"q": "What is the central weakness of James's advice to teachers?", "opts": ["It was copied from Wundt", "He never tested his recommendations on children", "It ignored memory research", "It was purely about discipline"], "correct": 1, "exp": "His advice was sound theoretical speculation by deduction, but he did not test it on actual pupils \u2014 so it is not scientific evidence."}, {"q": "Why do William James and Stanley Hall NOT count as having created research 'impact'?", "opts": ["Their work had no influence at all", "Their recommendations rested on observation-led theory, not tested research", "They worked only in Europe", "They never published anything"], "correct": 1, "exp": "Modern impact must be based on research. James and Hall influenced practice, but from observation-based theory rather than tested data."}, {"q": "How did M\u00fcnsterberg define applied psychology?", "opts": ["By the prestige of the journal", "By the researcher's intention to solve a practical problem", "By using only adult participants", "By avoiding experiments"], "correct": 1, "exp": "For M\u00fcnsterberg the defining feature was intention \u2014 starting research from a practical problem. He likened applied:experimental to engineering:physics."}, {"q": "Which is one of M\u00fcnsterberg's enduring forensic principles?", "opts": ["Always use leading questions to jog memory", "Collect eyewitness testimony as soon as possible after the event", "Trust confident witnesses completely", "Delay interviews to let memory settle"], "correct": 1, "exp": "Because forgetting increases with time, testimony should be gathered quickly; leading questions are avoided because they induce false memories."}, {"q": "Witmer's key shift in explaining mental illness was from:", "opts": ["Environment to heredity", "Heredity to environment", "Religion to medicine", "Measurement to treatment"], "correct": 1, "exp": "Witmer came to see a poor environment (not heredity) as the cause, meaning a better environment could aid recovery \u2014 a scientific take on moral treatment."}, {"q": "What did Lightner Witmer establish in 1896?", "opts": ["The American Psychological Association", "The world's first psychological clinic", "The first intelligence test", "The Bethlem Hospital"], "correct": 1, "exp": "Witmer founded the world's first psychological clinic and coined the term 'clinical psychology', staffing it with psychologists rather than physicians."}, {"q": "Which describes Walter Dill Scott's 'return coupon' idea?", "opts": ["A refund for faulty goods", "A small consumer action that primes a future purchase", "A tax on advertising", "A personnel selection test"], "correct": 1, "exp": "Returning a coupon for a free sample required positive action by the consumer, which Scott argued made a later purchase more likely."}, {"q": "How did Binet's concept of intelligence differ from Spearman's?", "opts": ["Binet measured a single 'g'; Spearman measured many faculties", "Binet measured many separate faculties; Spearman inferred a single general factor 'g'", "Both measured only memory", "Neither used testing"], "correct": 1, "exp": "Binet assumed many distinct faculties (no single number); Spearman later used factor analysis on correlated scores to infer general intelligence, g."}, {"q": "What did the REF add to the older RAE in 2014?", "opts": ["A ban on journal articles", "A requirement to demonstrate the impact of research on society", "A teaching-only assessment", "A reduction in funding competition"], "correct": 1, "exp": "The REF broadened assessment so universities had to show beneficial societal impact, not just research outputs \u2014 and by 2022 impact was weighted even more."}, {"q": "According to the evidence Hyland cites, the teaching\u2013research nexus is:", "opts": ["Strongly supported \u2014 top researchers teach best", "Not supported \u2014 little or even negative relationship between research and teaching quality", "Only true in the USA", "Impossible to study"], "correct": 1, "exp": "Studies (e.g. McKenzie et al., Teichler et al.) find little link, and sometimes better researchers receive worse student ratings \u2014 so high ranking does not guarantee better teaching."}];
+
+/* ---- view switching ---- */
+const navBtns=[...document.querySelectorAll('#nav button')];
+function show(view){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+view).classList.add('active');
+  navBtns.forEach(b=>b.classList.toggle('active', b.dataset.view===view));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+navBtns.forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));
+
+/* ---- overview -> lesson ---- */
+const lessonEls=[...document.querySelectorAll('.lesson')];
+let curLesson=0;
+function openLesson(num){
+  curLesson=lessonEls.findIndex(l=>l.dataset.lesson===num);
+  if(curLesson<0)curLesson=0;
+  renderLesson();
+  show('lessons');
+}
+function renderLesson(){
+  lessonEls.forEach((l,i)=>l.classList.toggle('active',i===curLesson));
+  const el=lessonEls[curLesson];
+  el.querySelector('.prev-l').disabled = curLesson===0;
+  el.querySelector('.next-l').disabled = curLesson===lessonEls.length-1;
+}
+document.querySelectorAll('.card[data-goto]').forEach(c=>
+  c.addEventListener('click',()=>openLesson(c.dataset.goto)));
+lessonEls.forEach(l=>{
+  l.querySelector('.prev-l').addEventListener('click',()=>{if(curLesson>0){curLesson--;renderLesson();window.scrollTo({top:0,behavior:'smooth'});}});
+  l.querySelector('.next-l').addEventListener('click',()=>{if(curLesson<lessonEls.length-1){curLesson++;renderLesson();window.scrollTo({top:0,behavior:'smooth'});}});
+});
+document.getElementById('back-to-grid').addEventListener('click',()=>show('overview'));
+// clicking the Lessons nav opens the first lesson by default
+navBtns.find(b=>b.dataset.view==='lessons').addEventListener('click',renderLesson);
+renderLesson();
+
+/* ---- flashcards ---- */
+let fcFilter='all', fcOrder=FC.map((_,i)=>i);
+const grid=document.getElementById('fc-grid');
+const countEl=document.getElementById('fc-count');
+function renderFC(){
+  grid.innerHTML='';
+  const items=fcOrder.map(i=>FC[i]).filter(c=>fcFilter==='all'||c.topic===fcFilter);
+  countEl.textContent=items.length+' card'+(items.length!==1?'s':'')+(fcFilter==='all'?'':' · '+fcFilter);
+  items.forEach(c=>{
+    const d=document.createElement('div');d.className='flip';
+    d.innerHTML=`<div class="flip-in">
+      <div class="flip-face flip-front"><div class="ftopic">${c.topic}</div><div class="q">${c.q}</div><div class="hint">tap to reveal ›</div></div>
+      <div class="flip-face flip-back"><div class="ftopic">${c.topic}</div><div class="a">${c.a}</div><div class="hint">‹ tap to flip back</div></div>
+    </div>`;
+    d.addEventListener('click',()=>d.classList.toggle('flipped'));
+    grid.appendChild(d);
+  });
+}
+document.querySelectorAll('.chip[data-topic]').forEach(ch=>ch.addEventListener('click',()=>{
+  document.querySelectorAll('.chip[data-topic]').forEach(x=>x.classList.remove('active'));
+  ch.classList.add('active');fcFilter=ch.dataset.topic;renderFC();
+}));
+document.getElementById('fc-shuffle').addEventListener('click',()=>{
+  for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}
+  renderFC();
+});
+document.getElementById('fc-reset').addEventListener('click',()=>{
+  fcOrder=FC.map((_,i)=>i);fcFilter='all';
+  document.querySelectorAll('.chip[data-topic]').forEach(x=>x.classList.toggle('active',x.dataset.topic==='all'));
+  renderFC();
+});
+renderFC();
+
+/* ---- MCQ ---- */
+const mcqList=document.getElementById('mcq-list');
+let answered, score;
+function renderMCQ(){
+  answered=0;score=0;
+  document.getElementById('mcq-score').textContent='0';
+  document.getElementById('mcq-ans').textContent='0';
+  mcqList.innerHTML='';
+  MCQ.forEach((m,qi)=>{
+    const card=document.createElement('div');card.className='q-card';
+    const letters=['A','B','C','D'];
+    let opts='';
+    m.opts.forEach((o,oi)=>{opts+=`<button class="opt" data-q="${qi}" data-o="${oi}"><span class="lett">${letters[oi]}</span><span>${o}</span></button>`;});
+    card.innerHTML=`<div class="qn">Question ${qi+1}</div><div class="qtext">${m.q}</div>
+      <div class="opts">${opts}</div><div class="explain" id="exp-${qi}"></div>`;
+    mcqList.appendChild(card);
+  });
+  mcqList.querySelectorAll('.opt').forEach(btn=>btn.addEventListener('click',onAnswer));
+}
+function onAnswer(e){
+  const btn=e.currentTarget;
+  const qi=+btn.dataset.q, oi=+btn.dataset.o;
+  const card=btn.closest('.q-card');
+  if(card.dataset.done)return;
+  card.dataset.done='1';answered++;
+  const m=MCQ[qi];
+  card.querySelectorAll('.opt').forEach(b=>{
+    b.classList.add('locked');
+    const bo=+b.dataset.o;
+    if(bo===m.correct)b.classList.add('correct');
+    else if(bo===oi)b.classList.add('wrong');
+  });
+  if(oi===m.correct)score++;
+  const exp=document.getElementById('exp-'+qi);
+  exp.innerHTML=(oi===m.correct?'<b>Correct.</b> ':'<b>Not quite.</b> ')+m.exp;
+  exp.classList.add('show');
+  document.getElementById('mcq-score').textContent=score;
+  document.getElementById('mcq-ans').textContent=answered;
+}
+document.getElementById('mcq-reset').addEventListener('click',renderMCQ);
+renderMCQ();
+</script>
+</body></html>
